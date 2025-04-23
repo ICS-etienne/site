@@ -5,6 +5,6 @@
     "city": "Sophia Antipolis",
     "country": "FR",
     "description": "Ph0wn (se prononce phone) est un événement dédié aux objets connectés. Ce CTF et ses ateliers sont donc centrés sur le hacking des appareils intelligents, avec des défis bas niveau sur le plan logiciel. L'objectif est d’amener les participants à interagir directement avec le matériel (par exemple : télécharger un firmware, se connecter à un port série, communiquer via Bluetooth...) et à utiliser les plateformes typiques des systèmes embarqués (ARM, Micropython, MQTT, ESP32...).",
-    "picture": "/images/2026-03-13_ph0wn-sophia-antipolis.png"
+    "picture": "/site/images/2026-03-13_ph0wn-sophia-antipolis.png"
   }
   

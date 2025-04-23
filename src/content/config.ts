@@ -9,7 +9,7 @@ const actualites = defineCollection({
     categories: z.array(z.string()),
     author: z.string(),
     summary: z.string(),
-    picture: z.string().optional(),
+    image: z.string().optional(),
   }),
 });
 
@@ -25,6 +25,7 @@ const agenda = defineCollection({
     picture: z.string(),
     city: z.string(),
     country: z.string(),
+    description: z.string(),
     link: z.string().optional(),
   }),
 });

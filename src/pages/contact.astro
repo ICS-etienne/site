@@ -1,0 +1,78 @@
+---
+import Layout from '@/layouts/ContentLayout.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpg,jpeg,png}');
+const imagePath = '/src/assets/images/secsea2024.jpg';
+
+if (!images[imagePath]) {
+  throw new Error(`L'image "${imagePath}" n'existe pas dans /src/assets/images/`);
+}
+
+const imageModule = await images[imagePath]();
+---
+
+<Layout title="Contact">
+  <section class="h-screen pt-20 px-2 sm:px-4 flex flex-col lg:flex-row items-center justify-center bg-white dark:bg-gray-900 overflow-hidden">
+
+    <!-- Image -->
+    <div class="w-full lg:w-1/2 h-64 lg:h-full overflow-hidden rounded-lg  py-20 lg:py-0 pb-0 lg:pb-4">
+        <Image 
+          src={imageModule.default} 
+          alt="Image mer et sécurité"
+          class="w-full h-full object-cover object-center rounded-lg"
+        />
+      </div>
+
+    <!-- Contact content -->
+    <div class="w-full lg:w-1/2 h-full flex flex-col items-center justify-center px-4 py-10 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="mt-3 text-2xl md:text-4xl font-bold text-gray-800 dark:text-white tracking-tight">
+          Prenez contact
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-300">
+          Notre équipe est toujours dispo pour discuter.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+          <!-- Email -->
+          <div class="text-center flex flex-col items-center p-4">
+            <div class="h-12 w-12 flex items-center justify-center text-gray-800 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+              </svg>
+            </div>
+            <h3 class="mt-6 font-semibold text-xl text-gray-800 dark:text-white">Email</h3>
+            <a href="mailto:ca@hackinprovence.fr" class="mt-2 text-sm text-gray-500 dark:text-gray-400 hover:underline">contact@hackinprovence.fr</a>
+          </div>
+
+          <!-- Office -->
+          <div class="text-center flex flex-col items-center p-4">
+            <div class="h-12 w-12 flex items-center justify-center text-gray-800 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+              </svg>
+            </div>
+            <h3 class="mt-6 font-semibold text-xl text-gray-800 dark:text-white">Rencontre</h3>
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Passez nous voir<br />sur un event ou hack'péro</p>
+          </div>
+
+            <!-- Discord -->
+            <div class="text-center flex flex-col items-center p-4">
+                <div class="h-12 w-12 flex items-center justify-center text-gray-800 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" fill="currentColor" class="h-12 w-12">
+                    <path d="M60.104 4.552A58.89 58.89 0 0 0 45.526 0a41.725 41.725 0 0 0-1.984 4.127 56.365 56.365 0 0 0-16.938 0A41.735 41.735 0 0 0 24.62 0 58.865 58.865 0 0 0 9.993 4.552C1.42 17.32-.943 29.773.293 42.09a59.128 59.128 0 0 0 17.844 8.66 43.748 43.748 0 0 0 3.888-6.31 38.045 38.045 0 0 1-6.111-2.944c.512-.384 1.013-.786 1.496-1.207a40.446 40.446 0 0 0 35.048 0c.483.43.984.823 1.496 1.207a37.952 37.952 0 0 1-6.107 2.935 43.838 43.838 0 0 0 3.888 6.31 59.099 59.099 0 0 0 17.84-8.66c1.312-13.785-2.256-26.189-9.888-37.538zM23.725 37.124c-3.548 0-6.438-3.23-6.438-7.202 0-3.973 2.857-7.202 6.438-7.202 3.6 0 6.473 3.247 6.438 7.202 0 3.973-2.857 7.202-6.438 7.202zm23.55 0c-3.548 0-6.438-3.23-6.438-7.202 0-3.973 2.857-7.202 6.438-7.202 3.6 0 6.473 3.247 6.438 7.202 0 3.973-2.838 7.202-6.438 7.202z" />
+                </svg>
+                </div>
+                <h3 class="mt-6 font-semibold text-xl text-gray-800 dark:text-white">Discord</h3>
+                <a href="https://discord.gg/5DmB8KjS" target="_blank" class="mt-2 text-sm text-gray-500 dark:text-gray-400 hover:underline">
+                discord.gg/5DmB8KjS
+                </a>
+            </div>  
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

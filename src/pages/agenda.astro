@@ -1,41 +1,25 @@
 ---
-import ContentLayout from "@/layouts/ContentLayout.astro";
+import Layout from "../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 
-type Event = {
-  title: string;
-  date: Date;
-  end_date?: Date;
-  city: string;
-  country: string;
-  summary?: string;
-  picture: string;
-  link?: string;
-  mois: number;
-  annee: number;
-  monthKey: string;
-  categories?: string[];
-  author?: string;
-};
-
-// Récupération des événements JSON
+// Charger tous les fichiers JSON des événements
 const allTimelines = await getCollection("agenda");
 
 // Date actuelle à minuit
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-// Mois en français
+// Map française pour les mois
 const moisFrancais = [
   "janvier", "février", "mars", "avril", "mai", "juin",
   "juillet", "août", "septembre", "octobre", "novembre", "décembre"
 ];
 
-// Formater la plage de dates
+// Fonction pour formater la date selon les règles
 function formatDateRange(startDate: Date, endDate?: Date): string {
   const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
   const startStr = startDate.toLocaleDateString('fr-FR', options);
-
+  
   if (endDate) {
     const endStr = endDate.toLocaleDateString('fr-FR', options);
 
@@ -53,123 +37,117 @@ function formatDateRange(startDate: Date, endDate?: Date): string {
     }
 
     return `du ${startStr} au ${endStr}`;
+  } else {
+    return `le ${startStr}`;
   }
-
-  return `le ${startStr}`;
 }
 
-// Clé mois normalisée
-function getMonthKey(date: Date): string {
-  return new Date(date.getFullYear(), date.getMonth(), 1).toISOString();
+// Fonction utilitaire pour créer une clé date normalisée (ex: "2025-04-01T00:00:00.000Z")
+function getMonthKey(date: Date) {
+  return new Date(date.getFullYear(), date.getMonth(), 1).toISOString(); 
 }
 
-// Aplatir et enrichir les événements
-const allEvents: Event[] = allTimelines.map((entry) => {
+// Récupérer tous les événements
+const allEvents = allTimelines.map((entry) => {
   const eventDate = new Date(entry.data.date);
   const eventEndDate = entry.data.end_date ? new Date(entry.data.end_date) : undefined;
-
   return {
     ...entry.data,
     date: eventDate,
-    end_date: eventEndDate,
+    date_end: eventEndDate,
     mois: eventDate.getMonth(),
     annee: eventDate.getFullYear(),
     monthKey: getMonthKey(eventDate),
   };
 });
 
-// Filtrer les événements futurs
+
+// Filtrer les événements à partir du jour actuel
 const upcomingEvents = allEvents
   .filter((event) => event.date >= today)
   .sort((a, b) => a.date.getTime() - b.date.getTime());
 
 // Regrouper par mois
-const monthGroups = new Map<string, Event[]>();
+const monthGroups = new Map<string, typeof upcomingEvents>();
+
 for (const event of upcomingEvents) {
   if (!monthGroups.has(event.monthKey)) {
     monthGroups.set(event.monthKey, []);
   }
-  monthGroups.get(event.monthKey)!.push(event);
+  monthGroups.get(event.monthKey)?.push(event);
 }
 
-// Trier les clés
+// Trier les clés de mois
 const sortedKeys = Array.from(monthGroups.keys()).sort(
   (a, b) => new Date(a).getTime() - new Date(b).getTime()
 );
 ---
 
+<Layout title="Agenda">
+  <div class="max-w-screen-lg md:mx-auto py-12 md:py-20 px-6 space-y-24">
+    {sortedKeys.map((key) => {
+      const events = monthGroups.get(key);
+      const refDate = new Date(key);
+      const mois = moisFrancais[refDate.getMonth()]?.charAt(0).toUpperCase() + moisFrancais[refDate.getMonth()].slice(1);
+      const annee = refDate.getFullYear();
 
-<ContentLayout title="Agenda">
-  <div class="max-w-screen-xl mx-auto py-20 px-6 flex flex-col gap-12">
-    <div class="w-full">
-      <h2 class="text-3xl font-bold tracking-tight text-center">Agenda</h2>
+      return (
+        <section class="flex flex-col md:flex-row items-start gap-x-12 gap-y-6">
+          <h2 class="text-3xl md:text-4xl font-bold shrink-0 w-full md:w-1/3 leading-snug tracking-tight text-right">
+            <span>{mois}</span>
+            <br />
+            <span>{annee}</span>
+          </h2>
 
-      <div class="max-w-screen-lg mx-auto py-12 md:py-20 px-6 space-y-24">
-        {sortedKeys.map((key) => {
-          const events = monthGroups.get(key);
-          const refDate = new Date(key);
-          const mois = moisFrancais[refDate.getMonth()]?.charAt(0).toUpperCase() + moisFrancais[refDate.getMonth()].slice(1);
-          const annee = refDate.getFullYear();
+          <div class="relative w-full md:w-2/3">
+            {events?.map((event) => {
+              const formattedDate = formatDateRange(event.date, event.date_end);
 
-          return (
-            <section class="flex flex-col md:flex-row items-start gap-x-12 gap-y-6">
-              <h2 class="font-bold shrink-0 w-full md:w-1/5 leading-snug tracking-tight text-right">
-                <span class="text-4xl">{mois}</span>
-                <br />
-                <span class="text-muted-foreground text-3xl">{annee}</span>
-              </h2>
+              return (
+                <div class="group relative flex items-start justify-between gap-4">
+                  <div class="flex items-start">
+                    <div class="mt-3 mr-5 flex flex-col gap-2 shrink-0 w-[75px] sm:w-[160px] text-end">
+                      <h6 class="text-sm text-primary font-semibold">
+                        {event.city} - {event.country}
+                      </h6>
+                      <span class="text-xs sm:text-sm text-muted-foreground">
+                        {formattedDate}
+                      </span>
+                    </div>
 
-              <div class="w-full md:w-2/3">
-                {events?.map((event) => {
-                  const formattedDate = formatDateRange(event.date, event.end_date);
-
-                  return (
-                    <div class="group flex items-start justify-between gap-4">
-                      <div class="flex items-start">
-                        <div class="mt-3 mr-5 flex flex-col gap-2 shrink-0 w-[75px] sm:w-[160px] text-end">
-                          <h6 class="text-sm text-primary font-semibold">
-                            {event.city} - {event.country}
-                          </h6>
-                          <span class="text-xs sm:text-sm text-muted-foreground">
-                            {formattedDate}
-                          </span>
-                        </div>
-
-                        <div class="pb-10 border-l-2 group-last:pb-4 pl-6 sm:pl-8">
-                          <div class="absolute h-3 w-3 -translate-x-1/2 -left-px top-4 rounded-full border-2 border-primary bg-background" />
-                          <h3 class="text-lg sm:text-xl font-semibold">{event.title}</h3>
-                          <p class="text-sm sm:text-base text-muted-foreground">
-                            {event.summary}
-                          </p>
-                          {event.link && (
-                            <a
-                              href={event.link}
-                              class="text-primary underline text-sm"
-                              target="_blank"
-                            >
-                              En savoir plus
-                            </a>
-                          )}
-                        </div>
-                      </div>
-
-                      {event.picture && (
-                        <div class="w-[96px] h-[64px] rounded-md overflow-hidden shrink-0 bg-muted">
-                          <img
-                            src={event.picture}
-                            alt={event.title}
-                            class="object-cover w-full h-full"
-                          />
-                        </div>
+                    <div class="relative pb-10 border-l-2 group-last:pb-4 pl-6 sm:pl-8">
+                      <div class="absolute h-3 w-3 -translate-x-1/2 -left-px top-4 rounded-full border-2 border-primary bg-background" />
+                      <h3 class="text-lg sm:text-xl font-semibold">{event.title}</h3>
+                      <p class="text-sm sm:text-base text-muted-foreground">
+                        {event.description}
+                      </p>
+                      {event.link && (
+                        <a
+                          href={event.link}
+                          class="text-primary underline text-sm"
+                          target="_blank"
+                        >
+                          En savoir plus
+                        </a>
                       )}
                     </div>
-                  );
-                })}
-              </div>
-            </section>
-          );
-        })}
-      </div>
-    </div>
+                  </div>
+
+                  {event.picture && (
+                    <div class="w-[96px] h-[64px] rounded-md overflow-hidden shrink-0 bg-muted">
+                      <img
+                        src={event.picture}
+                        alt={event.title}
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      );
+    })}
   </div>
-</ContentLayout>
+</Layout>
