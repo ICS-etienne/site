@@ -1,0 +1,182 @@
+[
+    {
+      "title": "Guides",
+      "links": [
+        { "title": "xxx", "link": "xxx", "description": "" }
+      ]
+    },
+    {
+      "title": "Formations",
+      "children": [
+        {
+          "title": "Gratuites",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Payantes",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Challenges & CTF",
+      "links": [
+        { "title": "xxx", "link": "xxx", "description": "" }
+      ]
+    },
+    {
+      "title": "Cheat Sheets",
+      "links": [
+        { "title": "xxx", "link": "xxx", "description": "" }
+      ]
+    },
+    {
+      "title": "Write-Ups",
+      "links": [
+        { "title": "xxx", "link": "xxx", "description": "" }
+      ]
+    },
+    {
+      "title": "Outils",
+      "children": [
+        {
+          "title": "Généralistes",
+          "links": [
+            { "title": "DFIR Artifact Parsers List", "link": "https://github.com/DFIR-Community/ArtifactParsers", "description": "Cette page répertorie et centralise des outils, validés par la communauté, pour parser ou analyser les artefacts numériques dans le cadre d'enquêtes en forensique numérique (DFIR)." },
+            { "title": "Arsenal Recon Forensics Tools", "link": "https://arsenalrecon.com/downloads", "description": "Cette page propose le téléchargement des outils forensiques développés par Arsenal Recon, incluant des logiciels propriétaires et open source pour l’analyse de fichiers systèmes, de journaux, et d’artefacts malveillants." },
+            { "title": "Autopsy®: Digital Forensics Platform", "link": "http://www.sleuthkit.org/autopsy/", "description": "Autopsy est une plateforme gratuite de forensique numérique dotée d'une interface graphique intuitive, permettant l’analyse complète d’un système via des modules extensibles, utilisée par les forces de l’ordre, les militaires et les entreprises." },
+            { "title": "Belkasoft Triage Tool", "link": "https://belkasoft.com/t", "description": "Belkasoft Triage est un outil gratuit, portable et rapide permettant aux enquêteurs d’identifier immédiatement des preuves numériques sur un appareil Windows, idéal pour les interventions sur site sous contrainte de temps." },
+            { "title": "Browser History Viewer", "link": "https://www.foxtonforensics.com/browser-history-viewer/", "description": "Browser History Viewer est un outil gratuit permettant d’analyser facilement l’historique web des principaux navigateurs, avec filtres, chronologie interactive et conversion automatique des horodatages." },
+            { "title": "Bulk Extractor", "link": "https://github.com/simsong/bulk_extractor", "description": "bulk_extractor est un outil de forensic rapide qui extrait automatiquement des informations utiles (emails, cartes bancaires, images, etc.) à partir de disques ou fichiers, sans lire les structures du système de fichiers." },
+            { "title": "Bulk Extractor with Record Carving", "link": "https://www.kazamiya.net/en/bulk_extractor-rec", "description": "Bulk Extractor avec Record Carving est une version améliorée de Bulk Extractor, qui permet d'extraire des enregistrements à partir de données brutes en utilisant des méthodes de carving de fichiers, avec des plugins supplémentaires pour analyser des structures comme les fichiers EVTX, les journaux NTFS et plus encore." },
+            { "title": "cLeapp: Chrome Logs Events and Protobuf Parser", "link": "https://github.com/markmckinnon/cLeapp", "description": "cLeapp est un outil Python permettant d'analyser les événements des journaux Chrome et de parser les fichiers Protobuf, avec une interface CLI et GUI, compatible avec plusieurs systèmes d'exploitation." },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Windows",
+          "links": [
+            { "title": "Chainsaw: Forensic Threat Hunting Tool for Windows Event Logs", "link": "https://github.com/WithSecureLabs/chainsaw", "description": "Chainsaw est un outil puissant de réponse rapide qui permet d'identifier les menaces dans les artefacts forensiques Windows, tels que les journaux d'événements et le fichier MFT. Il offre des fonctionnalités telles que la recherche rapide de chaînes, l'application de règles de détection Sigma, la création de chronologies d'exécution à partir des artefacts Shimcache et Amcache, et l'analyse de la base de données SRUM. Chainsaw est écrit en Rust, ce qui le rend très rapide, et il est compatible avec MacOS, Linux et Windows." },
+            { "title": "Cyber Triage Lite – USB-based Collection", "link": "https://www.cybertriage.com/blog/digital-forensics-tool-kit/free-dfir-with-cyber-triage-lite-intro-and-usb-based-collection/", "description": "Cyber Triage Lite est un outil gratuit de collecte et d'analyse de données DFIR pour Windows, permettant de recueillir des artefacts système via un exécutable unique, avec une interface graphique pour l'examen et la génération de rapports." },
+            { "title": "CyberPipe v5 – PowerShell DFIR Script", "link": "https://github.com/dwmetz/CyberPipe", "description": "CyberPipe v5 est un script PowerShell pour la collecte de données de forensique mémoire et disque lors d'enquêtes DFIR, prenant en charge l'image mémoire, la collecte triée et la récupération de clés BitLocker." },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Linux",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Mobiles",
+          "links": [
+            { "title": "Finder de Bundle-Id", "link": "https://offcornerdev.com/bundleid.html", "description": "**Bundle Id Finder** est un outil gratuit qui permet de trouver rapidement les Bundle-Ids des applications en recherchant leur nom, avec la possibilité de télécharger l'icône associée." },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Mémoires",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Réseaux & Cloud",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sources d’actualités et opinions",
+      "children": [
+        {
+          "title": "Blogs",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Flux RSS",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Podcasts",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        },
+        {
+          "title": "Vidéos",
+          "links": [
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" },
+            { "title": "xxx", "link": "xxx", "description": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Remerciements/Citations & sources",
+      "links": [
+        { "title": "Stark 4N6", "link": "https://start.me/p/q6mw4Q/forensicshttps://start.me/p/q6mw4Q/forensics", "description": "" }
+      ]
+    }
+  ]
+  

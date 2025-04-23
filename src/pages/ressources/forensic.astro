@@ -1,0 +1,225 @@
+---
+// Chargement du fichier forensic.json en fonction de la collection
+import ContentLayout from "@/layouts/ContentLayout.astro";
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("ressources", "forensic"); // Chargement de forensic.json
+const blocks = Array.isArray(entry?.data) ? entry.data : [];
+---
+
+<ContentLayout title="Ressources forensic">
+  <div class="max-w-screen-xl mx-auto py-20 px-6 xl:px-0 flex flex-col lg:flex-row items-start gap-12">
+    <div class="w-full">
+      <h2 class="text-3xl font-bold tracking-tight mb-8">Ressources forensic</h2>
+
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        {blocks.length === 0 && <p>Aucune ressource trouvée.</p>}
+
+        {blocks.map((block, blockIndex) => (
+          <div class="p-4 border rounded-xl shadow bg-white">
+            <h3 class="text-xl font-semibold mb-2">{block.title}</h3>
+
+            {block.links && (
+              <div class="space-y-1">
+                {block.links.map((link, linkIndex) => (
+                  <div class="mb-4">
+                    <div class="flex justify-between items-center">
+                      <a
+                        href={link.link}
+                        target="_blank"
+                        class="flex items-center gap-2 hover:underline text-sm"
+                      >
+                        <img
+                          src={`https://www.google.com/s2/favicons?sz=32&domain_url=${encodeURIComponent(link.link)}`}
+                          alt="favicon"
+                          class="w-4 h-4"
+                        />
+                        {link.title}
+                      </a>
+
+                      {link.description && (
+                        <button
+                          type="button"
+                          class="toggle-description"
+                          aria-expanded="false"
+                          aria-controls={`description-${blockIndex}-${linkIndex}`}
+                        >
+                          <svg
+                            class="w-5 h-5 text-gray-600 transition-transform duration-300"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+
+                    {link.description && (
+                      <div
+                        id={`description-${blockIndex}-${linkIndex}`}
+                        class="mt-2 ml-6 text-gray-600 text-sm hidden"
+                      >
+                        <p>{link.description}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {block.children && block.children.length > 0 && (
+              <div class="mt-4" data-block-index={blockIndex}>
+                <div class="mb-4 gap-2"> {/* Ajout de flex-wrap et gap */}
+                  {block.children.map((child, childIndex) => (
+                    <button
+                      type="button"
+                      class="tab-button text-xs font-medium py-2 px-4 rounded-t border-b-2 border-transparent hover:bg-gray-100"
+                      data-tab={childIndex}
+                      data-block={blockIndex}
+                    >
+                      {child.title}
+                    </button>
+                  ))}
+                </div>
+
+                {block.children.map((child, childIndex) => (
+                  <div
+                    class={`tab-panel ${childIndex === 0 ? "block" : "hidden"}`}
+                    data-block={blockIndex}
+                    data-tab-content={childIndex}
+                  >
+                    <div class="space-y-1 ml-2">
+                      {child.links.map((link, linkIndex) => (
+                        <div class="mb-4">
+                          <div class="flex justify-between items-center">
+                            <a
+                              href={link.link}
+                              target="_blank"
+                              class="flex items-center gap-2 hover:underline text-sm"
+                            >
+                              <img
+                                src={`https://www.google.com/s2/favicons?sz=32&domain_url=${encodeURIComponent(link.link)}`}
+                                alt="favicon"
+                                class="w-4 h-4"
+                              />
+                              {link.title}
+                            </a>
+
+                            {link.description && (
+                              <button
+                                type="button"
+                                class="toggle-description"
+                                aria-expanded="false"
+                                aria-controls={`description-${blockIndex}-${childIndex}-${linkIndex}`}
+                              >
+                                <svg
+                                  class="w-5 h-5 text-gray-600 transition-transform duration-300"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 9l-7 7-7-7"
+                                  />
+                                </svg>
+                              </button>
+                            )}
+                          </div>
+
+                          {link.description && (
+                            <div
+                              id={`description-${blockIndex}-${childIndex}-${linkIndex}`}
+                              class="mt-2 ml-6 text-gray-600 text-sm hidden"
+                            >
+                              <p>{link.description}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Gestion des onglets
+      const allTabButtons = document.querySelectorAll(".tab-button");
+
+      allTabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const blockIndex = btn.dataset.block;
+          const tabIndex = btn.dataset.tab;
+
+          const buttonsInBlock = document.querySelectorAll(
+            `.tab-button[data-block="${blockIndex}"]`
+          );
+          buttonsInBlock.forEach((b) => {
+            b.classList.remove("border-blue-500", "underline");
+          });
+
+          btn.classList.add("border-blue-500", "underline");
+
+          const panels = document.querySelectorAll(
+            `.tab-panel[data-block="${blockIndex}"]`
+          );
+          panels.forEach((panel) => {
+            panel.classList.add("hidden");
+          });
+
+          const targetPanel = document.querySelector(
+            `.tab-panel[data-block="${blockIndex}"][data-tab-content="${tabIndex}"]`
+          );
+          if (targetPanel) targetPanel.classList.remove("hidden");
+        });
+      });
+
+      // Activer l'onglet 0 au chargement
+      document.querySelectorAll(".tab-button[data-tab='0']").forEach((btn) => {
+        btn.classList.add("border-blue-500", "underline");
+      });
+
+      // Gestion du toggle des descriptions
+      const toggleButtons = document.querySelectorAll(".toggle-description");
+
+      toggleButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const targetId = button.getAttribute("aria-controls");
+          const target = document.getElementById(targetId);
+
+          if (target) {
+            const isHidden = target.classList.contains("hidden");
+
+            target.classList.toggle("hidden");
+            button.setAttribute("aria-expanded", String(isHidden));
+
+            // Faire tourner le SVG
+            const svg = button.querySelector("svg");
+            if (svg) {
+              svg.classList.toggle("rotate-180", isHidden);
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+</ContentLayout>

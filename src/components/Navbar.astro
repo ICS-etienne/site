@@ -1,0 +1,21 @@
+---
+import Logo from "@/assets/logo.svg";
+---
+
+<nav class="fixed w-full h-16 px-6 py-4 flex items-center justify-between bg-black">
+  <!-- Logo à gauche -->
+  <div class="flex items-center gap-3">
+    <Logo class="h-7 w-auto" />
+    <span class="font-bold text-md text-white">HackInProvence</span>
+  </div>
+
+  <!-- Liens de navigation à droite -->
+  <div class="hidden md:flex text-white items-center space-x-6 text-sm font-medium">
+    <a href="/" class="hover:text-[#8f8f8f8f] transition">Accueil</a>
+    <a href="/actualites" class="hover:text-[#8f8f8f8f] transition">Actualités</a>
+    <a href="/agenda" class="hover:text-[#8f8f8f8f] transition">Agenda</a>
+    <a href="/ressources" class="hover:text-[#8f8f8f8f] transition">Ressources</a>
+    <a href="/secsea" class="hover:text-[#8f8f8f8f] transition">SECSEA</a>
+    <a href="/contact" class="hover:text-[#8f8f8f8f] transition">Contact</a>
+  </div>
+</nav>

@@ -1,0 +1,114 @@
+---
+import ContentLayout from "@/layouts/ContentLayout.astro";
+
+const ressources = [
+  {
+    title: "Espace CTF",
+    description:
+      "Informations et actualités autour des CTF.",
+      inProgress: true,
+  },
+  {
+    title: "Plateformes",
+    description:
+      "Une sélection pour s'entraîner à la cybersécurité.",
+    inProgress: true,
+  },
+  {
+    title: "OSINT",
+    description:
+      "Techniques et outils de renseignement en sources ouvertes pour retrouver des informations publiques.",
+    inProgress: true,
+  },
+  {
+    title: "Crypto",
+    description:
+      "Défis autour du chiffrement, de la cryptanalyse et des algorithmes mathématiques.",
+    inProgress: true,
+  },
+  {
+    title: "Forensic",
+    description:
+      "Analyse post-incident, récupération de fichiers et investigation numérique.",
+  },
+  {
+    title: "Network",
+    description:
+      "Analyse de paquets, protocoles réseau et investigation sur les flux de communication.",
+    inProgress: true,
+  },
+  {
+    title: "Pwn",
+    description:
+      "Exploitation de binaires, reverse engineering et dépassement de mémoire.",
+    inProgress: true,
+  },
+  {
+    title: "IA",
+    description:
+      "Exploration de l'intelligence artificielle appliquée à la cybersécurité et aux CTF.",
+    inProgress: true,
+  },
+  {
+    title: "Stegano",
+    description:
+      "Détection et extraction de données cachées dans les images, sons et autres médias.",
+    inProgress: true,
+  },
+  {
+    title: "Reverse Engineering",
+    description:
+      "Analyse de programmes compilés pour en comprendre la logique interne, retrouver des clés cachées et contourner des protections.",
+    inProgress: true,
+  },
+];
+
+const toSlug = (str: string) =>
+  str.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+---
+
+<ContentLayout title="Ressources CTF">
+  <div class="py-20">
+    <div class="w-full text-center px-6">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Ressources</h2>
+      <p class="mt-2 text-lg text-center text-gray-500 dark:text-gray-400">
+        Partage de ressources pour CTF.
+      </p>
+    </div>
+
+    <section class="flex justify-center">
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        {ressources.map((ressource, index) => (
+          <a
+            href={`/ressources/${toSlug(ressource.title)}`}
+            class={`p-12 rounded-xl max-w-md border transition-shadow hover:shadow-md flex items-center justify-center gap-6 ${
+            ressource.inProgress ? "bg-accent" : "bg-white dark:bg-gray-900"
+            }`}
+          >
+            {/* Zone gauche : icône */}
+            <div class="flex items-center justify-center h-12 w-12 rounded-full text-2xl">
+              📁
+            </div>
+
+            {/* Zone droite : texte */}
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                {ressource.title}
+              </h3>
+              {!ressource.inProgress && (
+                <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-400">
+                  {ressource.description}
+                </p>
+              )}
+              {ressource.inProgress && (
+                <p class="mt-2 text-sm text-yellow-500">
+                  Cette section est en cours d'élaboration. Restez à l'écoute !
+                </p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</ContentLayout>

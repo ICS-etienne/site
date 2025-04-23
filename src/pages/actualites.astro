@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/ContentLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Badge } from '@/components/starwind/badge';
+import { Card, CardContent, CardHeader } from '@/components/starwind/card';
+
+const posts: CollectionEntry<'actualites'>[] = await getCollection('actualites');
+
+const categories = [
+  { name: 'Hack\'péro', totalPosts: 10, background: 'bg-red-500', color: 'text-indigo-500' },
+  { name: 'Workshop', totalPosts: 5, background: 'bg-lime-500', color: 'text-amber-500' },
+  { name: 'Conférence', totalPosts: 8, background: 'bg-pink-500', color: 'text-emerald-500' },
+  { name: 'CTF', totalPosts: 12, background: 'bg-rose-500', color: 'text-rose-500' },
+  { name: 'New', totalPosts: 15, background: 'bg-yellow-500', color: 'text-cyan-500' },
+];
+
+function getCategoryStyle(name: string) {
+  const category = categories.find((c) => c.name === name);
+  return category
+    ? `${category.background} ${category.color} text-black`
+    : 'bg-gray-200 text-gray-800 text-black';
+}
+---
+
+<Layout title="Actualités">
+  <div class="pt-16 max-w-screen-xl mx-auto py-10 lg:py-16 px-6 xl:px-0 flex flex-col lg:flex-row items-start gap-12">
+    <div>
+      <h2 class="text-3xl font-bold tracking-tight">Actualités</h2>
+
+      <div class="mt-4 space-y-12">
+        {posts.map((post) => (
+          <Card class="flex flex-col sm:flex-row items-start gap-6">
+            <CardHeader>
+              <div class="aspect-video sm:w-56 bg-muted rounded-lg">
+                {post.data.image && <img src={post.data.image} alt={post.data.title} class="rounded-lg" />}
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div class="flex gap-2 flex-wrap">
+                {post.data.categories.map((cat) => (
+                  <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
+                    {cat}
+                  </Badge>
+                ))}
+              </div>
+              <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
+              <p class="text-muted-foreground">{post.data.summary}</p>
+              <div class="mt-2 text-sm text-muted-foreground">
+                Par {post.data.author} – {post.data.date.toLocaleDateString()}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+
+    <aside class="sticky top-8 shrink-0 lg:max-w-sm w-full">
+      <h3 class="text-3xl font-bold tracking-tight">Categories</h3>
+      <div class="mt-4 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-2">
+        {categories.map((category) => (
+          <div
+            class={`flex items-center justify-between gap-2 bg-muted p-3 rounded-md dark:bg-opacity-25 ${category.background}`}
+          >
+            <div class="flex items-center gap-3">
+              <span class="font-medium">{category.name}</span>
+            </div>
+            <Badge class="px-1.5 rounded-full">
+              {category.totalPosts}
+            </Badge>
+          </div>
+        ))}
+      </div>
+    </aside>
+  </div>
+</Layout>
