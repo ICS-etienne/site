@@ -80,7 +80,7 @@ const toSlug = (str: string) =>
       <div class="mt-12 grid md:grid-cols-2 gap-6">
         {ressources.map((ressource, index) => (
           <a
-            href={`/ressources/${toSlug(ressource.title)}`}
+            href={`/site/ressources/${toSlug(ressource.title)}`}
             class={`p-12 rounded-xl max-w-md border transition-shadow hover:shadow-md flex items-center justify-center gap-6 ${
             ressource.inProgress ? "bg-accent" : "bg-white dark:bg-gray-900"
             }`}
