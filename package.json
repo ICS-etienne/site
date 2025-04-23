@@ -6,8 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "astro build && npx gh-pages -d dist"
+    "astro": "astro"
   },
   "dependencies": {
     "@tabler/icons": "^3.31.0",
@@ -17,8 +16,5 @@
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "^4.1.4",
     "tw-animate-css": "^1.2.8"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.0.0"
   }
 }
