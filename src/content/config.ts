@@ -3,15 +3,17 @@ import { defineCollection, z } from 'astro:content';
 
 const actualites = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/blog-actualites" }),
-  schema: z.object({
-    title: z.string(),
-    date: z.date(),
-    categories: z.array(z.string()),
-    author: z.string(),
-    summary: z.string(),
-    image: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.date(),
+      categories: z.array(z.string()),
+      author: z.string(),
+      summary: z.string(),
+      image: image().optional(), // ✅ ici c'est bon maintenant
+    }),
 });
+
 
 const agenda = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "src/content/timelines-agenda" }),

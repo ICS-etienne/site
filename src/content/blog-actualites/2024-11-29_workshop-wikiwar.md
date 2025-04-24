@@ -1,10 +1,10 @@
 ---
-title: "Hackpéro 83 – Session Wikiwar"
+title: "Workshop Wikiwar"
 date: 2024-11-29
-categories: ["hackpéro", "workshop", "83", "wikiwar"]
+categories: ["workshop", "hackpéro", "83", "wikiwar"]
 author: "CharlaineP"
 summary: "Un Hackpéro automnal à La Seyne sur Mer avec échanges passionnés sur la cybersécurité, une ambiance conviviale et une session de Wikiwar pour tester vos neurones !"
-image: "/site/src/assets/images/2024-11-29_hackpero83.jpeg"
+image: "./images/2024-11-29_workshop-wikiwar.jpeg"
 ---
 
 🍻 **Hackpéro 83** 🍻
