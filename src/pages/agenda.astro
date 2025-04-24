@@ -61,10 +61,9 @@ const allEvents = allTimelines.map((entry) => {
   };
 });
 
-
-// Filtrer les événements à partir du jour actuel
+// Filtrer les événements pour afficher le mois actuel et les événements futurs
 const upcomingEvents = allEvents
-  .filter((event) => event.date >= today)
+  .filter((event) => event.date >= today || event.date.getMonth() === today.getMonth() && event.date.getFullYear() === today.getFullYear())
   .sort((a, b) => a.date.getTime() - b.date.getTime());
 
 // Regrouper par mois
@@ -92,19 +91,18 @@ const sortedKeys = Array.from(monthGroups.keys()).sort(
       const annee = refDate.getFullYear();
 
       return (
-        <section class="flex flex-col md:flex-row items-start gap-x-12 gap-y-6">
-          <h2 class="text-3xl md:text-4xl font-bold shrink-0 w-full md:w-1/3 leading-snug tracking-tight text-right">
-            <span>{mois}</span>
-            <br />
-            <span>{annee}</span>
+        <section class="flex flex-col md:flex-row items-start justify-between gap-x-4">
+          <h2 class="w-40 md:w-48 text-3xl md:text-4xl font-bold shrink-0 leading-snug tracking-tight flex flex-col">
+            <span class="text-gray-900">{mois}</span>
+            <span class="text-base md:text-lg font-medium text-gray-500">{annee}</span>
           </h2>
 
-          <div class="relative w-full md:w-2/3">
+          <div class="w-full md:w-26/32">
             {events?.map((event) => {
               const formattedDate = formatDateRange(event.date, event.date_end);
 
               return (
-                <div class="group relative flex items-start justify-between gap-4">
+                <div class="group flex items-start justify-between gap-4">
                   <div class="flex items-start">
                     <div class="mt-3 mr-5 flex flex-col gap-2 shrink-0 w-[75px] sm:w-[160px] text-end">
                       <h6 class="text-sm text-primary font-semibold">
@@ -134,7 +132,7 @@ const sortedKeys = Array.from(monthGroups.keys()).sort(
                   </div>
 
                   {event.picture && (
-                    <div class="w-[96px] h-[64px] rounded-md overflow-hidden shrink-0 bg-muted">
+                    <div class="hidden md:block w-[96px] h-[64px] rounded-md overflow-hidden shrink-0 bg-muted">
                       <img
                         src={event.picture}
                         alt={event.title}
