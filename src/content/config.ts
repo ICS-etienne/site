@@ -15,19 +15,20 @@ const actualites = defineCollection({
 
 const agenda = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "src/content/timelines-agenda" }),
-  schema: z.object({
-    title: z.string(),
-    date: z.string().transform((val) => new Date(val)),
-    end_date: z.string().optional().transform((val) => val ? new Date(val) : undefined),
-    categories: z.array(z.string()).optional(),
-    author: z.string().optional(),
-    summary: z.string().optional(),
-    picture: z.string(),
-    city: z.string(),
-    country: z.string(),
-    description: z.string(),
-    link: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.string().transform((val) => new Date(val)),
+      end_date: z.string().optional().transform((val) => val ? new Date(val) : undefined),
+      categories: z.array(z.string()).optional(),
+      author: z.string().optional(),
+      summary: z.string().optional(),
+      picture: image().optional(),
+      city: z.string(),
+      country: z.string(),
+      description: z.string(),
+      link: z.string().optional(),
+    }),
 });
 
   const ressources = defineCollection({
