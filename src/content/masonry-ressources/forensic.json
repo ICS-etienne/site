@@ -21,7 +21,10 @@
         { "title": "Targeted Locations Quick Reference Guide - Windows/Mac", "link": "https://www.magnetforensics.com/resources/white-paper-targeted-locations-quick-reference-guide-windows-mac/", "description": "Références rapides sur les emplacements ciblés pour Windows et Mac dans les investigations." },
         { "title": "Targeted Locations Quick Reference Guide - Linux", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-for-linux-artifacts/", "description": "Références rapides pour l'analyse forensic sous Linux." },
         { "title": "Targeted Locations Quick Reference Guide - Android/iOS", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-android-and-ios/", "description": "Guide rapide pour l'analyse forensic d'artefacts sur Android et iOS." },
-        { "title": "Targeted Locations Quick Reference Guide - Android and Google Takeouts", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-for-android-and-google-takeouts/", "description": "Références rapides pour les artefacts Android et Google Takeouts." }
+        { "title": "Targeted Locations Quick Reference Guide - Android and Google Takeouts", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-for-android-and-google-takeouts/", "description": "Références rapides pour les artefacts Android et Google Takeouts." },
+        { "title": "DFIR Community Hardware Fund", "link": "https://github.com/DFIRScience/DFIRCommunityHardwareFund", "description": "Un fond pour financer du matériel pour la communauté DFIR." },
+        { "title": "BYOM - Build Your Own Methodology", "link": "https://blog.digital-forensics.it/2020/04/byom-build-your-own-methodology-in.html", "description": "Créer une méthodologie de réponse aux incidents personnalisée." },
+        { "title": "EZTools Manuals", "link": "https://leanpub.com/eztoolsmanuals", "description": "Guides détaillés pour utiliser EZTools pour les investigations forensic." }
       ]
     },
     {
@@ -75,7 +78,9 @@
       "title": "Write-Ups",
       "links": [
         { "title": "TheBinaryHick - Public Images and Case Materials", "link": "https://thebinaryhick.blog/public_images/", "description": "Accès public à des cas forensiques et jeux d'images pour analyse." },
-        { "title": "DFIRScience Archive", "link": "https://archive.org/details/@dfirscience", "description": "Collection de cas, analyses et ressources forensiques archivées." }
+        { "title": "DFIRScience Archive", "link": "https://archive.org/details/@dfirscience", "description": "Collection de cas, analyses et ressources forensiques archivées." },
+        { "title": "DFIR Review", "link": "https://dfir.pubpub.org/", "description": "Revue académique pour la recherche et la publication de travaux forensic."},
+        { "title": "Unallocated Space CTF Writeups", "link": "https://unallocatedspace.org/", "description": "Événements et write-ups centrés sur les challenges forensic."}
       ]
     },
     {
@@ -106,7 +111,43 @@
             { "title": "Magnet Forensics – Free Tools", "link": "https://www.magnetforensics.com/free-tools/", "description": "Collection gratuite d'outils forensiques multiplateformes fournie par Magnet Forensics." },
             { "title": "WELA", "link": "https://github.com/Yamato-Security/WELA", "description": "Outil de visualisation et de corrélation d'événements Windows fonctionnant sur Windows et Linux." },
             { "title": "LogPai - LogHub", "link": "https://github.com/logpai/loghub", "description": "Collection de jeux de données de logs pour l'analyse forensique et machine learning." },
-            { "title": "Android Forensics References", "link": "https://github.com/RealityNet/Android-Forensics-References", "description": "Références pour l'analyse forensic sur les appareils Android." }
+            { "title": "Android Forensics References", "link": "https://github.com/RealityNet/Android-Forensics-References", "description": "Références pour l'analyse forensic sur les appareils Android." },
+            { "title": "UFDR2DIR", "link": "https://github.com/DFIRScience/UFDR2DIR", "description": "Outil pour convertir les UFDR (Unix Forensic Data Recovery) en un format utilisable pour les investigations forensic." },
+            { "title": "UFADE", "link": "https://github.com/prosch88/UFADE", "description": "Outil pour l'analyse et la récupération de données dans les systèmes Unix." },
+            { "title": "Hexordia Syslog Monitoring Tool", "link": "https://www.hexordia.com/hexordia-syslog-monitoring-tool", "description": "Outil pour la surveillance des logs système pour la forensic." },
+            { "title": "Hexordia Sysdiagnose Log Toolkit", "link": "https://www.hexordia.com/hexordia-sysdiagnose-log-toolkit", "description": "Boîte à outils pour diagnostiquer et analyser les logs système." },
+            { "title": "SQLiteWalker", "link": "https://github.com/stark4n6/SQLiteWalker", "description": "Outil pour analyser les bases de données SQLite utilisées dans les enquêtes forensic." },
+            { "title": "parse_sms.db", "link": "https://github.com/h4x0r/parse_sms.db/tree/main", "description": "Outil pour analyser les bases de données SMS sur Android." },
+            { "title": "MEAT", "link": "https://github.com/jfarley248/MEAT", "description": "Outil pour l'analyse des journaux et la gestion des artefacts dans les investigations forensic." },
+            { "title": "jd-gui", "link": "https://github.com/java-decompiler/jd-gui", "description": "Décompilateur pour les fichiers Java, utile dans les enquêtes forensic." },
+            { "title": "jadx", "link": "https://github.com/skylot/jadx", "description": "Décompilateur pour les fichiers APK Android, utilisé dans la forensic mobile." },
+            { "title": "iTunes Backup Reader", "link": "https://github.com/jfarley248/iTunes_Backup_Reader", "description": "Outil pour lire et analyser les sauvegardes iTunes lors des enquêtes forensic." },
+            { "title": "iTunes-Backup-Explorer", "link": "https://github.com/MaxiHuHe04/iTunes-Backup-Explorer", "description": "Explorer les sauvegardes iTunes pour l'extraction de données forensic." },
+            { "title": "iOS Triage", "link": "https://github.com/RealityNet/ios_triage", "description": "Outil pour effectuer un triage forensic rapide sur les appareils iOS." },
+            { "title": "iOS Sysdiagnose Forensic Scripts", "link": "https://github.com/cheeky4n6monkey/iOS_sysdiagnose_forensic_scripts", "description": "Scripts pour extraire des artefacts forensic des appareils iOS." },
+            { "title": "iLEAPP", "link": "https://github.com/abrignoni/iLEAPP", "description": "Outil pour l'analyse forensic des appareils iOS." },
+            { "title": "iCATCH", "link": "https://github.com/AXYS-Cyber/iCATCH", "description": "Outil pour collecter et analyser les artefacts iOS dans un cadre forensic." },
+            { "title": "Google Analytic Cookie Cruncher", "link": "https://github.com/mdegrazia/Google-Analytic-Cookie-Cruncher", "description": "Outil pour l'analyse des cookies Google Analytics dans le cadre des investigations forensic." },
+            { "title": "dex2jar", "link": "https://github.com/pxb1988/dex2jar", "description": "Outil permettant de convertir des fichiers DEX (Android) en fichiers JAR pour l'analyse forensic." },
+            { "title": "evanolece", "link": "https://www.hexordia.com/evanolece", "description": "Outil pour extraire des informations des fichiers logs et des événements pour les enquêtes forensic." },
+            { "title": "ccl-segb", "link": "https://github.com/cclgroupltd/ccl-segb", "description": "Outil pour extraire les informations des fichiers SEG (log) dans les enquêtes forensic." },
+            { "title": "ccl_abx", "link": "https://github.com/cclgroupltd/android-bits/tree/main/ccl_abx", "description": "Outil pour analyser les artefacts Android dans les fichiers SEG." },
+            { "title": "ArtEx2", "link": "https://doubleblak.com/app.php?id=ArtEx2", "description": "Outil pour l'analyse forensic des artefacts dans les fichiers EX2." },
+            { "title": "APOLLO", "link": "https://github.com/mac4n6/APOLLO", "description": "Outil pour l'analyse forensic des artefacts sur les systèmes macOS." },
+            { "title": "Android Triage", "link": "https://github.com/RealityNet/android_triage", "description": "Outil pour effectuer un triage forensic rapide sur les appareils Android." },
+            { "title": "andriller", "link": "https://github.com/den4uk/andriller", "description": "Outil pour analyser les données provenant des appareils Android dans le cadre des enquêtes forensic." },
+            { "title": "ALEAPP", "link": "https://github.com/abrignoni/ALEAPP", "description": "Outil d'extraction et d'analyse des artefacts Android." },
+            { "title": "BundleID Lookup", "link": "https://github.com/pug4N6/bundleID_lookup", "description": "Outil pour rechercher des informations sur les BundleIDs dans les applications mobiles." },
+            { "title": "BundleID Lookup (Web Version)", "link": "https://offcornerdev.com/bundleid.html", "description": "Version web pour rechercher les BundleIDs dans les applications mobiles." },
+            { "title": "ToolFetcher", "link": "https://github.com/kev365/ToolFetcher", "description": "Outil permettant de rechercher des outils pour la forensic et la réponse à incident." },
+            { "title": "Forensic Timeliner", "link": "https://github.com/acquiredsecurity/forensic-timeliner", "description": "Outil permettant de créer des chronologies d'événements à partir d'artefacts forensic." },
+            { "title": "Install EZTools", "link": "https://github.com/sethenoka/Install_EZTools", "description": "Outil pour automatiser l'installation des outils forensic EZTools." },
+            { "title": "EZTools", "link": "https://ericzimmerman.github.io/#!index.md", "description": "Suite d'outils pour analyser et examiner des artefacts Windows." },
+            { "title": "Awesome-KAPE", "link": "https://github.com/AndrewRathbun/Awesome-KAPE", "description": "Recueil d'outils et de ressources pour le KAPE (Kroll Artifact Parser and Extractor)." },
+            { "title": "Timeline Explorer", "link": "https://aboutdfir.com/toolsandartifacts/windows/timeline-explorer/", "description": "Outil pour analyser et visualiser les timelines générées à partir des artefacts Windows." },
+            { "title": "Registry Explorer", "link": "https://aboutdfir.com/toolsandartifacts/windows/registry-explorer-recmd/", "description": "Outil pour examiner et analyser les clés de registre Windows pour la forensic." },
+            { "title": "MFT Explorer", "link": "https://aboutdfir.com/toolsandartifacts/windows/mft-explorer-mftecmd/", "description": "Outil pour examiner les MFT (Master File Tables) de systèmes Windows." },
+            { "title": "KAPE", "link": "https://aboutdfir.com/toolsandartifacts/windows/kape/", "description": "Kroll Artifact Parser and Extractor (KAPE), un outil pour extraire des artefacts rapidement et efficacement." }
           ]
         },
         {
@@ -114,7 +155,8 @@
           "links": [
             { "title": "Chainsaw: Forensic Threat Hunting Tool for Windows Event Logs", "link": "https://github.com/WithSecureLabs/chainsaw", "description": "Chainsaw est un outil puissant de réponse rapide qui permet d'identifier les menaces dans les artefacts forensiques Windows, tels que les journaux d'événements et le fichier MFT. Il offre des fonctionnalités telles que la recherche rapide de chaînes, l'application de règles de détection Sigma, la création de chronologies d'exécution à partir des artefacts Shimcache et Amcache, et l'analyse de la base de données SRUM. Chainsaw est écrit en Rust, ce qui le rend très rapide, et il est compatible avec MacOS, Linux et Windows." },
             { "title": "Cyber Triage Lite – USB-based Collection", "link": "https://www.cybertriage.com/blog/digital-forensics-tool-kit/free-dfir-with-cyber-triage-lite-intro-and-usb-based-collection/", "description": "Cyber Triage Lite est un outil gratuit de collecte et d'analyse de données DFIR pour Windows, permettant de recueillir des artefacts système via un exécutable unique, avec une interface graphique pour l'examen et la génération de rapports." },
-            { "title": "CyberPipe v5 – PowerShell DFIR Script", "link": "https://github.com/dwmetz/CyberPipe", "description": "CyberPipe v5 est un script PowerShell pour la collecte de données de forensique mémoire et disque lors d'enquêtes DFIR, prenant en charge l'image mémoire, la collecte triée et la récupération de clés BitLocker." }
+            { "title": "CyberPipe v5 – PowerShell DFIR Script", "link": "https://github.com/dwmetz/CyberPipe", "description": "CyberPipe v5 est un script PowerShell pour la collecte de données de forensique mémoire et disque lors d'enquêtes DFIR, prenant en charge l'image mémoire, la collecte triée et la récupération de clés BitLocker." },
+            { "title": "WinPmem", "link": "https://github.com/Velocidex/WinPmem/releases", "description": "Outil open-source pour capturer la mémoire volatile de Windows." }
           ]
         },
         {
@@ -133,25 +175,49 @@
         {
           "title": "Mémoires",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "WinPmem", "link": "https://github.com/Velocidex/WinPmem/releases", "description": "Outil pour capturer la mémoire volatile de systèmes Windows." },
+            { "title": "VolWeb", "link": "https://github.com/k1nd0ne/VolWeb", "description": "Interface web pour analyser les images mémoire avec Volatility." },
+            { "title": "Volatility Workbench", "link": "https://www.osforensics.com/tools/volatility-workbench.html", "description": "Workbench permettant d'analyser la mémoire avec le framework Volatility." },
+            { "title": "Volatility Binaries", "link": "https://github.com/stuxnet999/volatility-binaries", "description": "Binaries compilés pour Volatility, un outil d'analyse de mémoire." },
+            { "title": "Volatility 3", "link": "https://github.com/volatilityfoundation/volatility3", "description": "Nouvelle version de Volatility, un framework d'analyse de la mémoire pour les enquêtes numériques." },
+            { "title": "Volatility Foundation", "link": "https://volatilityfoundation.org/", "description": "Site officiel de Volatility avec des informations et des ressources." },
+            { "title": "SuperMem", "link": "https://github.com/CrowdStrike/SuperMem", "description": "Outil de collecte et d'analyse de la mémoire développé par CrowdStrike." },
+            { "title": "MemProcFSHunter", "link": "https://github.com/memprocfshunt/MemProcFSHunter", "description": "Outil pour l'analyse de la mémoire en temps réel avec MemProcFS." },
+            { "title": "MemProcFS Analyzer", "link": "https://github.com/LETHAL-FORENSICS/MemProcFS-Analyzer", "description": "Outil pour analyser la mémoire avec MemProcFS." },
+            { "title": "MemProcFS", "link": "https://github.com/ufrisk/MemProcFS", "description": "Système de fichiers pour accéder à la mémoire à partir d'une image de RAM." },
+            { "title": "Magnet RAM Capture", "link": "https://www.magnetforensics.com/resources/magnet-ram-capture/", "description": "Outil Magnet Forensics pour capturer la mémoire RAM de systèmes Windows." },
+            { "title": "Magnet Process Capture", "link": "https://www.magnetforensics.com/resources/magnet-process-capture/", "description": "Outil pour capturer les processus en cours d'exécution dans la mémoire." },
+            { "title": "Magnet DumpIt for Windows", "link": "https://www.magnetforensics.com/resources/magnet-dumpit-for-windows/", "description": "Outil de capture de la mémoire pour Windows développé par Magnet Forensics." },
+            { "title": "DumpIt for Linux", "link": "https://github.com/MagnetForensics/dumpit-linux", "description": "Version Linux de l'outil DumpIt pour capturer la mémoire volatile." },
+            { "title": "Collect Memory Dump", "link": "https://github.com/LETHAL-FORENSICS/Collect-MemoryDump", "description": "Script pour collecter une image de la mémoire d'un système." },
+            { "title": "Ram Capturer", "link": "https://belkasoft.com/ram-capturer", "description": "Outil gratuit pour capturer la mémoire sur les systèmes Windows." },
+            { "title": "AVML", "link": "https://github.com/microsoft/avml", "description": "Outil Microsoft pour capturer la mémoire et effectuer des analyses." },
+            { "title": "VolWeb", "link": "https://github.com/k1nd0ne/VolWeb", "description": "Interface web pour exécuter Volatility à distance." }
           ]
         },
         {
           "title": "Réseaux & Cloud",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "Zenmap", "link": "https://nmap.org/zenmap/", "description": "Interface graphique pour Nmap, utilisée pour les analyses de réseau." },
+            { "title": "Wireshark", "link": "https://www.wireshark.org/#download", "description": "Outil de capture et d'analyse des paquets réseau." },
+            { "title": "URLScan", "link": "https://urlscan.io/", "description": "Outil pour analyser et inspecter des URL suspectes." },
+            { "title": "Snort", "link": "https://snort.org/downloads", "description": "Système de détection d'intrusion réseau (NIDS)." },
+            { "title": "Tcpextract", "link": "https://github.com/faust/tcpextract", "description": "Outil pour extraire les flux TCP d'un fichier pcap." },
+            { "title": "SMBTimeline", "link": "https://github.com/00010111/smbtimeline", "description": "Outil pour extraire les informations de chronologie SMB à partir d'images de disque." },
+            { "title": "Smap", "link": "https://github.com/s0md3v/Smap", "description": "Scanner de ports et de services basé sur des scripts." },
+            { "title": "Sansfor509", "link": "https://github.com/dlcowen/sansfor509", "description": "Collection de ressources pour le cours SANS FOR509." },
+            { "title": "RustScan", "link": "https://github.com/bee-san/RustScan", "description": "Scanner de ports rapide écrit en Rust." },
+            { "title": "PcapXray", "link": "https://github.com/Srinivas11789/PcapXray", "description": "Outil d'analyse et de visualisation des fichiers Pcap." },
+            { "title": "PacketsifterTool", "link": "https://github.com/packetsifter/packetsifterTool", "description": "Outil pour analyser et filtrer les paquets réseau." },
+            { "title": "Oh365UserFinder", "link": "https://github.com/dievus/Oh365UserFinder", "description": "Outil pour extraire des informations sur les utilisateurs d'Office 365." },
+            { "title": "NetworkMiner", "link": "https://www.netresec.com/?page=Networkminer", "description": "Outil d'analyse de réseau passif et de reconstruction de sessions." },
+            { "title": "Microsoft Extractor Suite", "link": "https://github.com/invictus-ir/Microsoft-Extractor-Suite", "description": "Suite d'outils pour extraire les artefacts d'Office 365 et autres services Microsoft." },
+            { "title": "Microsoft Analyzer Suite", "link": "https://github.com/LETHAL-FORENSICS/Microsoft-Analyzer-Suite", "description": "Outil pour analyser les artefacts de Microsoft." },
+            { "title": "DFIR Resources", "link": "https://github.com/cyb3rmik3/MDE-DFIR-Resources", "description": "Ressources DFIR pour Microsoft Defender for Endpoint." },
+            { "title": "Feroxbuster", "link": "https://github.com/epi052/feroxbuster", "description": "Outil de force brute de répertoires et de fichiers sur un serveur web." },
+            { "title": "Dirsearch", "link": "https://github.com/maurosoria/dirsearch", "description": "Outil de recherche de répertoires sur les serveurs web." },
+            { "title": "BruteShark", "link": "https://github.com/odedshimon/BruteShark", "description": "Outil pour l'analyse des réseaux, basé sur les paquets." },
+            { "title": "AngryIP Scanner", "link": "https://angryip.org/", "description": "Scanner de réseau open-source et multiplateforme." }
           ]
         },
         {
@@ -170,50 +236,42 @@
         {
           "title": "Blogs",
           "links": [
-            { "title": "Live System Analysis: Discovering Encrypted Disk Volumes", "link": "https://blog.elcomsoft.com/2020/07/live-system-analysis-discovering-encrypted-disk-volumes/", "description": "Article pratique expliquant comment identifier et analyser les volumes chiffrés sur un système actif en investigation numérique." },
-            { "title": "Magnet Forensics Blog - CTF Update", "link": "https://www.magnetforensics.com/blog/update-on-magnet-summit-2022-capture-the-flag-contests/", "description": "Annonce et récapitulatif du CTF Magnet Summit 2022." },
-            { "title": "TheBinaryHick Blog", "link": "https://thebinaryhick.blog/public_images/", "description": "Articles, études de cas et ressources pour le DFIR." },
-            { "title": "Magnet Forensics Blog - Chromebook Data Locations", "link": "https://www.magnetforensics.com/blog/chromebook-data-locations/", "description": "Références pour localiser les données dans les appareils Chromebook pour les investigations forensic." }
+            { "title": "Live System Analysis: Discovering Encrypted Disk Volumes", "link": "https://blog.elcomsoft.com/2020/07/live-system-analysis-discovering-encrypted-disk-volumes/", "description": "Article détaillé expliquant comment identifier et analyser les volumes chiffrés pour les enquêtes forensiques." },
+            { "title": "Magnet Forensics Blog - CTF Update", "link": "https://www.magnetforensics.com/blog/update-on-magnet-summit-2022-capture-the-flag-contests/", "description": "Annonce et récapitulatif du CTF Magnet Summit, orienté forensic." },
+            { "title": "TheBinaryHick Blog", "link": "https://thebinaryhick.blog/", "description": "Blog proposant des cas pratiques, exercices et réflexions sur la forensic numérique." },
+            { "title": "Magnet Forensics Blog - Chromebook Data Locations", "link": "https://www.magnetforensics.com/blog/chromebook-data-locations/", "description": "Références pratiques pour localiser les données Chromebook en forensic." }
           ]
         },
         {
           "title": "Flux RSS",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "Forensic Focus RSS", "link": "https://www.forensicfocus.com/feed/", "description": "Flux d'articles, de recherches et de discussions autour du forensic numérique." },
+            { "title": "DFIRScience RSS", "link": "https://dfir.science/feed.xml", "description": "Actualités, recherches et méthodologies en forensic." },
+            { "title": "AboutDFIR Blog Roll RSS", "link": "https://aboutdfir.com/feed/", "description": "Actualités et ressources centralisées pour le domaine du forensic numérique." },
+            { "title": "DFIR Diva RSS", "link": "https://dfirdiva.com/feed/", "description": "Conseils pratiques et tutoriels orientés forensic sur divers OS." },
+            { "title": "SANS Internet Storm Center - Forensics RSS", "link": "https://isc.sans.edu/rssfeed.xml", "description": "Section forensic du SANS Internet Storm Center." }
           ]
         },
         {
           "title": "Podcasts",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "Malicious Life", "link": "https://malicious.life/", "description": "Podcast retraçant l'histoire des cyberattaques, parfois avec un focus sur la forensic." },
+            { "title": "FTK Over The Air Podcast", "link": "https://www.exterro.com/resources/ftk-over-the-air-podcast", "description": "Podcast technique orienté autour des outils forensic FTK." },
+            { "title": "NoLimitSecu - Forensic Episodes", "link": "https://www.nolimitsecu.fr/feed/podcast/", "description": "Podcast généraliste en cybersécurité, certains épisodes forensic spécialisés." },
+            { "title": "Hacktback - Les BASES de l'analyse FORENSIQUE", "link": "https://www.youtube.com/watch?app=desktop&v=5KCv94MCoa8", "description": "Podcast français qui traite entre autres de forensic et d'analyse numérique." }
           ]
         },
         {
           "title": "Vidéos",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "UNALLOCATED SPACE", "link": "https://www.youtube.com/channel/UCn2BjxD5Az_yDGFHMdD_txQ/search?query=forensic", "description": "Chaîne YouTube proposant des présentations et exercices de forensic numérique." },
+            { "title": "Hexordia YouTube Channel", "link": "https://www.youtube.com/@hexordia/search", "description": "Analyse de logs, memory forensic, et artefacts systèmes." },
+            { "title": "Mobile Forensic Investigations", "link": "https://www.youtube.com/c/MobileForensicInvestigations/search", "description": "Dédié aux enquêtes forensic sur appareils mobiles (iOS, Android)." },
+            { "title": "DFIR Playlist - YouTube", "link": "https://www.youtube.com/playlist?list=PLBNtagSCmDWyUcCsdq7m5ljKYDYTNG9R1", "description": "Vidéos pédagogiques centrées sur l'analyse forensic." }
           ]
         }
       ]
-    },
+    },    
     {
       "title": "Remerciements/Citations & sources",
       "links": [
