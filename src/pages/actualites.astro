@@ -56,69 +56,80 @@ function getCategoryStyle(name: string) {
 ---
 
 <Layout title="Actualités">
-  <div class="pt-16 max-w-screen-md mx-auto py-10 lg:py-20 px-6 xl:px-0 flex lg:flex-row lg:gap-12">
-    <!-- SECTION PRINCIPALE : les posts -->
-    <div>
-      <h2 class="text-3xl font-bold tracking-tight">Actualités</h2>
+  <div class="pt-16 max-w-screen-md mx-auto py-10 lg:py-20 px-6 xl:px-0">
+    
+    <!-- Partie titre + sous-titre centrée -->
+    <div class="w-full text-center px-6">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Actualités</h2>
+      <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">
+        Les dernières nouvelles et activités organisées ou suivies par l'association.
+      </p>
+    </div>
 
-      <div class="mt-4 space-y-12" id="posts-container">
-        {posts.map((post) => (
-          <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
-            <CardHeader>
-              <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
-                {post.data.image && (
-                  <Image
-                    src={post.data.image}
-                    alt={post.data.title}
-                    class="rounded-lg object-fill"
-                  />
-                )}
-              </div>
-            </CardHeader>
-            <CardContent class="flex flex-col">
-              <div class="flex gap-2 flex-wrap">
-                {post.data.categories.map((cat) => (
-                  <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
-                    {cat}
-                  </Badge>
-                ))}
-              </div>
-              <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
-              <p class="text-muted-foreground">{post.data.summary}</p>
-              <div class="mt-2 text-sm text-muted-foreground">
-                Par {post.data.author} – {post.data.date.toLocaleDateString()}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+    <!-- Partie flex : posts + aside -->
+    <div class="mt-12 flex lg:flex-row lg:gap-12">
+      
+      <!-- SECTION PRINCIPALE : les posts -->
+      <div class="flex-1">
+        <div class="mt-4 space-y-12" id="posts-container">
+          {posts.map((post) => (
+            <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
+              <CardHeader>
+                <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
+                  {post.data.image && (
+                    <Image
+                      src={post.data.image}
+                      alt={post.data.title}
+                      class="rounded-lg object-fill"
+                    />
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent class="flex flex-col">
+                <div class="flex gap-2 flex-wrap">
+                  {post.data.categories.map((cat) => (
+                    <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
+                      {cat}
+                    </Badge>
+                  ))}
+                </div>
+                <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
+                <p class="text-muted-foreground">{post.data.summary}</p>
+                <div class="mt-2 text-sm text-muted-foreground">
+                  Par {post.data.author} – {post.data.date.toLocaleDateString()}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ASIDE : Catégories dynamiques -->
-  <div class="lg:fixed top-20 right-16 shrink-0 w-full lg:max-w-[200px] w-[180px]">
-    <h3 class="text-3xl font-bold tracking-tight mb-4">Catégories</h3>
-    <div class="flex flex-wrap gap-3 sm:flex-row md:grid-cols-3 lg:flex-col">
-      {categories.map((category) => (
-        <label class="flex items-center gap-3 p-3 rounded-md cursor-pointer transition hover:bg-opacity-80 w-auto">
-          <div>
-            <input
-              type="checkbox"
-              class="peer h-6 w-6 cursor-pointer appearance-none rounded-full bg-slate-100 shadow border border-slate-300 checked:bg-slate-800 checked:border-slate-800 transition"
-              data-category={category.name}
-              checked
-            />
-          </div>
-          <Badge class={`flex justify-between items-center text-sm ${getCategoryStyle(category.name)} px-3 py-1 rounded-full font-medium w-[100px]`}>
-            <span class="truncate">{category.name}</span>
-            <span class="text-xs ml-2">{category.totalPosts}</span>
-          </Badge>
-        </label>
-      ))}
-    </div>
+      <!-- ASIDE : Catégories dynamiques -->
+      <div class="hidden lg:block lg:fixed top-20 right-16 shrink-0 w-[180px]">
+        <h3 class="text-3xl font-bold tracking-tight mb-4">Catégories</h3>
+        <div class="flex flex-wrap gap-3 sm:flex-row md:grid-cols-3 lg:flex-col">
+          {categories.map((category) => (
+            <label class="flex items-center gap-3 p-3 rounded-md cursor-pointer transition hover:bg-opacity-80 w-auto">
+              <div>
+                <input
+                  type="checkbox"
+                  class="peer h-6 w-6 cursor-pointer appearance-none rounded-full bg-slate-100 shadow border border-slate-300 checked:bg-slate-800 checked:border-slate-800 transition"
+                  data-category={category.name}
+                  checked
+                />
+              </div>
+              <Badge class={`flex justify-between items-center text-sm ${getCategoryStyle(category.name)} px-3 py-1 rounded-full font-medium w-[100px]`}>
+                <span class="truncate">{category.name}</span>
+                <span class="text-xs ml-2">{category.totalPosts}</span>
+              </Badge>
+            </label>
+          ))}
+        </div>
+      </div>
+
+    </div> 
   </div>
 </Layout>
-
 
 <script>
     function filterPosts() {
@@ -140,10 +151,8 @@ function getCategoryStyle(name: string) {
         if (post instanceof HTMLElement && post.style) {
           if (isVisible) {
             post.style.display = "";
-
-            return
+            return;
           }
-
           post.style.display = 'none';
         }
       });
@@ -151,12 +160,10 @@ function getCategoryStyle(name: string) {
   
     // Ajouter l'événement aux checkboxes pour filtrer les articles lors du changement d'état
     window.onload = () => {
-      // Appeler la fonction de filtrage au chargement de la page pour initialiser l'affichage
       filterPosts();
   
-      // Attacher l'événement onchange à chaque checkbox
       document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('change', filterPosts);
       });
     };
-</script> 
+</script>

@@ -2,7 +2,26 @@
     {
       "title": "Guides",
       "links": [
-        { "title": "xxx", "link": "xxx", "description": "" }
+        { "title": "Live System Analysis: Discovering Encrypted Disk Volumes", "link": "https://blog.elcomsoft.com/2020/07/live-system-analysis-discovering-encrypted-disk-volumes/", "description": "Ce guide explique comment analyser un système en fonctionnement pour identifier des volumes chiffrés, en utilisant des méthodes pratiques d'investigation numérique sur des disques durs chiffrés, avec ou sans accès direct aux clés de déchiffrement." },
+        { "title": "Magnet Apple Warrant Return Assistant", "link": "https://www.magnetforensics.com/resources/magnet-apple-warrant-return-assistant/", "description": "Aide gratuite pour traiter les retours Apple lors d’enquêtes judiciaires." },
+        { "title": "Forensic Note – NTFS Log Tracker", "link": "https://sites.google.com/site/forensicnote/ntfs-log-tracker", "description": "Guide gratuit pour le suivi et l'analyse des journaux NTFS." },
+        { "title": "CFReDS (NIST) - Corpus for Forensics", "link": "https://cfreds.nist.gov/all", "description": "Corpus d'images forensiques gratuites pour l'entraînement et l'analyse." },
+        { "title": "ArsenalRecon - Public Disk Images", "link": "https://arsenalrecon.com/insights/publicly-accessible-disk-images-grid-for-dfir", "description": "Grille de disques accessibles au public pour l'analyse forensique." },
+        { "title": "AboutDFIR - Education Challenges and CTFs", "link": "https://aboutdfir.com/education/challenges-ctfs/", "description": "Liste de ressources éducatives DFIR, y compris des challenges et CTFs." },
+        { "title": "Andrew Rathbun - DFIR Artifact Museum", "link": "https://github.com/AndrewRathbun/DFIRArtifactMuseum", "description": "Musée virtuel d'artefacts numériques pour l'étude forensique." },
+        { "title": "DFIRMadness - Stolen Szechuan Sauce", "link": "https://dfirmadness.com/the-stolen-szechuan-sauce/", "description": "Challenge forensic basé sur un scénario fictif d'incident numérique." },
+        { "title": "iBlue Team - Disk Images Notes", "link": "https://www.iblue.team/general-notes-1/disk-images-for-various-filesystems-and-configurations", "description": "Notes et disques exemples pour différents systèmes de fichiers." },
+        { "title": "Windows 11 Time Rules", "link": "https://www.khyrenz.com/post/windows-11-time-rules", "description": "Analyse des règles temporelles dans Windows 11 pour les investigations forensic." },
+        { "title": "Volatility Cheatsheet", "link": "https://blog.onfvp.com/post/volatility-cheatsheet/", "description": "Guide rapide pour l'utilisation de Volatility pour l'analyse de la mémoire." },
+        { "title": "Practical Windows Forensics Cheat Sheet", "link": "https://github.com/bluecapesecurity/PWF/blob/main/Resources/PracticalWindowsForensics-cheat-sheet.pdf", "description": "Références pratiques pour l'analyse forensic sous Windows." },
+        { "title": "Initial Forensic Analysis of a PinePhone", "link": "https://www.khyrenz.com/post/initial-forensic-analysis-of-a-pinephone", "description": "Guide pour l'analyse forensic du PinePhone." },
+        { "title": "iOS Forensics References", "link": "https://github.com/RealityNet/iOS-Forensics-References", "description": "Références pour les investigations forensic sur les appareils iOS." },
+        { "title": "iOS Acquisition Guide", "link": "https://www.atropos4n6.com/wp-content/uploads/2021/03/iOS_Acquisition_Guide.pdf", "description": "Guide détaillé sur l'acquisition des données forensic sur les appareils iOS." },
+        { "title": "Forensic Artifacts in Office 365", "link": "https://techcommunity.microsoft.com/blog/microsoftsecurityexperts/forensic-artifacts-in-office-365-and-where-to-find-them/3634865", "description": "Ressources sur les artefacts forensic d'Office 365." },
+        { "title": "Targeted Locations Quick Reference Guide - Windows/Mac", "link": "https://www.magnetforensics.com/resources/white-paper-targeted-locations-quick-reference-guide-windows-mac/", "description": "Références rapides sur les emplacements ciblés pour Windows et Mac dans les investigations." },
+        { "title": "Targeted Locations Quick Reference Guide - Linux", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-for-linux-artifacts/", "description": "Références rapides pour l'analyse forensic sous Linux." },
+        { "title": "Targeted Locations Quick Reference Guide - Android/iOS", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-android-and-ios/", "description": "Guide rapide pour l'analyse forensic d'artefacts sur Android et iOS." },
+        { "title": "Targeted Locations Quick Reference Guide - Android and Google Takeouts", "link": "https://www.magnetforensics.com/resources/targeted-locations-quick-reference-guide-for-android-and-google-takeouts/", "description": "Références rapides pour les artefacts Android et Google Takeouts." }
       ]
     },
     {
@@ -11,7 +30,8 @@
         {
           "title": "Gratuites",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "CFReDS - Training Images (NIST)", "link": "https://cfreds.nist.gov/all", "description": "Corpus d'images d'entraînement gratuites fournies par NIST." },
+            { "title": "ACSC Cyber Security Challenge", "link": "https://www.cyber.gov.au/acsc/view-all-content/news/acsc-cyber-security-challenge", "description": "Challenge de cybersécurité organisé par l'ACSC, accès gratuit." }
           ]
         },
         {
@@ -25,19 +45,37 @@
     {
       "title": "Challenges & CTF",
       "links": [
-        { "title": "xxx", "link": "xxx", "description": "" }
+        { "title": "DFRWS 2021 Challenge", "link": "https://dfrws.org/dfrws-2021-challenge/", "description": "Challenge forensic international organisé par DFRWS." },
+        { "title": "Magnet Summit 2022 CTF", "link": "https://www.magnetforensics.com/blog/update-on-magnet-summit-2022-capture-the-flag-contests/", "description": "Compétition CTF forensic organisée durant le Magnet Summit 2022." },
+        { "title": "CyberDefenders BlueTeam CTF", "link": "https://cyberdefenders.org/blueteam-ctf-challenges/?type=ctf", "description": "Plateforme de CTF pour la Blue Team et le DFIR." },
+        { "title": "Cellebrite CTF September 2023", "link": "https://cellebrite.com/en/cellebrite-capture-the-flag-september-2023/", "description": "Compétition CTF orientée mobile et données numériques par Cellebrite." },
+        { "title": "Cellebrite CTF 2021 Wrap-up", "link": "https://cellebrite.com/en/part-5-and-thats-a-wrap-for-the-2021-capture-the-flag-ctf/", "description": "Résultat final et analyse du CTF Cellebrite 2021." },
+        { "title": "CTFtime", "link": "https://ctftime.org/", "description": "Calendrier international centralisant tous les CTFs existants." },
+        { "title": "Belkasoft CTF", "link": "https://belkasoft.com/ctf", "description": "CTF orienté forensic numérique organisé par Belkasoft." },
+        { "title": "DigitalCorpora Scenarios", "link": "http://downloads.digitalcorpora.org/corpora/scenarios/", "description": "Scénarios et corpus d'images forensiques pour challenges et entraînements." },
+        { "title": "Azr43lKn1ght - DFIR LABS Exercises", "link": "https://github.com/Azr43lKn1ght/DFIR-LABS", "description": "Laboratoires DFIR gratuits pour la pratique de la réponse à incident." }
       ]
     },
     {
       "title": "Cheat Sheets",
       "links": [
-        { "title": "xxx", "link": "xxx", "description": "" }
+        { "title": "Epoch Cheat Sheet", "link": "https://assets-global.website-files.com/5f02f2c93eab87a6ea84e2f3/656da27da36e0c5cd1715d8a_EpochCheatsheet.pdf", "description": "Cheat sheet sur les dates Epoch et leur conversion." },
+        { "title": "DFU Mode Cheat Sheet", "link": "https://blog.elcomsoft.com/2021/01/dfu-mode-cheat-sheet/", "description": "Références pour l'utilisation du mode DFU sur les appareils Apple." },
+        { "title": "DFIR Cheat Sheet", "link": "https://www.jaiminton.com/cheatsheet/DFIR/", "description": "Guide rapide pour la réponse à incident et les enquêtes DFIR." },
+        { "title": "Windows Process Analysis Cheat Sheet", "link": "https://winprocs.dfir.tips/", "description": "Cheat sheet sur l'analyse des processus Windows pour les enquêtes forensic." },
+        { "title": "Evidence Collection Cheat Sheet", "link": "https://evids.dfir.tips/", "description": "Guide pour la collecte de preuves lors d'une enquête numérique." },
+        { "title": "Malware Archaeology Cheat Sheets", "link": "https://www.malwarearchaeology.com/cheat-sheets", "description": "Références et cheat sheets pour l'analyse de malwares." },
+        { "title": "Zeltser Cheat Sheets", "link": "https://zeltser.com/cheat-sheets/", "description": "Cheat sheets pour l'analyse forensic et la réponse à incident." },
+        { "title": "Blue Team Cheat Sheet", "link": "https://digitalforensicforest.com/wp-content/uploads/2022/08/Blue-Team-Cheat-Sheet-.pdf", "description": "Ressource pour les équipes de défense (Blue Team) en forensic." },
+        { "title": "Belkasoft Mobile Forensics Cheat Sheet", "link": "https://26836331.fs1.hubspotusercontent-eu1.net/hubfs/26836331/Belkasoft-Mobile-Forensics-Cheatsheet-En%20-1.pdf", "description": "Cheat sheet pour les investigations forensic sur appareils mobiles." },
+        { "title": "APFS Cheat Sheet", "link": "https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/blt61c336e02577e733/5eb0940e248a28605479ccf0/FOR518_APFS_CheatSheet_012020.pdf", "description": "Cheat sheet sur le système de fichiers APFS d'Apple pour les analyses forensic." }
       ]
     },
     {
       "title": "Write-Ups",
       "links": [
-        { "title": "xxx", "link": "xxx", "description": "" }
+        { "title": "TheBinaryHick - Public Images and Case Materials", "link": "https://thebinaryhick.blog/public_images/", "description": "Accès public à des cas forensiques et jeux d'images pour analyse." },
+        { "title": "DFIRScience Archive", "link": "https://archive.org/details/@dfirscience", "description": "Collection de cas, analyses et ressources forensiques archivées." }
       ]
     },
     {
@@ -54,7 +92,21 @@
             { "title": "Bulk Extractor", "link": "https://github.com/simsong/bulk_extractor", "description": "bulk_extractor est un outil de forensic rapide qui extrait automatiquement des informations utiles (emails, cartes bancaires, images, etc.) à partir de disques ou fichiers, sans lire les structures du système de fichiers." },
             { "title": "Bulk Extractor with Record Carving", "link": "https://www.kazamiya.net/en/bulk_extractor-rec", "description": "Bulk Extractor avec Record Carving est une version améliorée de Bulk Extractor, qui permet d'extraire des enregistrements à partir de données brutes en utilisant des méthodes de carving de fichiers, avec des plugins supplémentaires pour analyser des structures comme les fichiers EVTX, les journaux NTFS et plus encore." },
             { "title": "cLeapp: Chrome Logs Events and Protobuf Parser", "link": "https://github.com/markmckinnon/cLeapp", "description": "cLeapp est un outil Python permettant d'analyser les événements des journaux Chrome et de parser les fichiers Protobuf, avec une interface CLI et GUI, compatible avec plusieurs systèmes d'exploitation." },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "LEAF", "link": "https://github.com/alex-cart/LEAF", "description": "Framework open-source pour la collecte et l'analyse de données forensiques sur Linux, macOS et Windows." },
+            { "title": "INDXParse", "link": "https://github.com/williballenthin/INDXParse", "description": "Outil multiplateforme permettant d'analyser les enregistrements d'index INDX issus de systèmes de fichiers NTFS." },
+            { "title": "Hindsight", "link": "https://github.com/obsidianforensics/hindsight", "description": "Outil d'analyse d'historique Google Chrome pour Windows, macOS et Linux." },
+            { "title": "Hayabusa", "link": "https://github.com/Yamato-Security/hayabusa", "description": "Analyse rapide et efficace des journaux d'événements Windows, compatible Windows et Linux." },
+            { "title": "FEX Imager", "link": "https://getdataforensics.com/product/fex-imager/", "description": "Solution d'acquisition forensique multiplateforme pour l'imagerie de disques et de volumes." },
+            { "title": "Fennec", "link": "https://github.com/AbdulRhmanAlfaifi/Fennec", "description": "Outil d'analyse forensique réseau léger et multiplateforme." },
+            { "title": "CyberPipe", "link": "https://github.com/dwmetz/CyberPipe", "description": "Pipeline d'extraction, de transformation et de chargement (ETL) destiné aux flux forensiques, multi-OS." },
+            { "title": "Cyber Triage Lite", "link": "https://www.cybertriage.com/blog/digital-forensics-tool-kit/free-dfir-with-cyber-triage-lite-intro-and-usb-based-collection/", "description": "Version gratuite de Cyber Triage pour collecter rapidement des artefacts forensiques sur divers systèmes." },
+            { "title": "Velociraptor", "link": "https://github.com/Velocidex/velociraptor", "description": "EDR open-source pour la collecte et l'analyse forensique sur plusieurs systèmes d'exploitation." },
+            { "title": "Timesketch", "link": "https://github.com/google/timesketch", "description": "Outil collaboratif d'analyse temporelle des données forensiques, compatible multi-OS." },
+            { "title": "Paraben - Free Digital Investigation Software", "link": "https://paraben.com/free-digital-investigation-software/", "description": "Ensemble d'outils gratuits de criminalistique numérique pour diverses plateformes." },
+            { "title": "Magnet Forensics – Free Tools", "link": "https://www.magnetforensics.com/free-tools/", "description": "Collection gratuite d'outils forensiques multiplateformes fournie par Magnet Forensics." },
+            { "title": "WELA", "link": "https://github.com/Yamato-Security/WELA", "description": "Outil de visualisation et de corrélation d'événements Windows fonctionnant sur Windows et Linux." },
+            { "title": "LogPai - LogHub", "link": "https://github.com/logpai/loghub", "description": "Collection de jeux de données de logs pour l'analyse forensique et machine learning." },
+            { "title": "Android Forensics References", "link": "https://github.com/RealityNet/Android-Forensics-References", "description": "Références pour l'analyse forensic sur les appareils Android." }
           ]
         },
         {
@@ -62,35 +114,20 @@
           "links": [
             { "title": "Chainsaw: Forensic Threat Hunting Tool for Windows Event Logs", "link": "https://github.com/WithSecureLabs/chainsaw", "description": "Chainsaw est un outil puissant de réponse rapide qui permet d'identifier les menaces dans les artefacts forensiques Windows, tels que les journaux d'événements et le fichier MFT. Il offre des fonctionnalités telles que la recherche rapide de chaînes, l'application de règles de détection Sigma, la création de chronologies d'exécution à partir des artefacts Shimcache et Amcache, et l'analyse de la base de données SRUM. Chainsaw est écrit en Rust, ce qui le rend très rapide, et il est compatible avec MacOS, Linux et Windows." },
             { "title": "Cyber Triage Lite – USB-based Collection", "link": "https://www.cybertriage.com/blog/digital-forensics-tool-kit/free-dfir-with-cyber-triage-lite-intro-and-usb-based-collection/", "description": "Cyber Triage Lite est un outil gratuit de collecte et d'analyse de données DFIR pour Windows, permettant de recueillir des artefacts système via un exécutable unique, avec une interface graphique pour l'examen et la génération de rapports." },
-            { "title": "CyberPipe v5 – PowerShell DFIR Script", "link": "https://github.com/dwmetz/CyberPipe", "description": "CyberPipe v5 est un script PowerShell pour la collecte de données de forensique mémoire et disque lors d'enquêtes DFIR, prenant en charge l'image mémoire, la collecte triée et la récupération de clés BitLocker." },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "CyberPipe v5 – PowerShell DFIR Script", "link": "https://github.com/dwmetz/CyberPipe", "description": "CyberPipe v5 est un script PowerShell pour la collecte de données de forensique mémoire et disque lors d'enquêtes DFIR, prenant en charge l'image mémoire, la collecte triée et la récupération de clés BitLocker." }
           ]
         },
         {
           "title": "Linux",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "VLEAPP", "link": "https://github.com/abrignoni/VLEAPP", "description": "Outil open-source pour l'analyse d'applications mobiles Android." },
+            { "title": "RLEAPP", "link": "https://github.com/abrignoni/RLEAPP", "description": "Framework pour extraire et analyser des artefacts mobiles iOS et Android." }
           ]
         },
         {
           "title": "Mobiles",
           "links": [
-            { "title": "Finder de Bundle-Id", "link": "https://offcornerdev.com/bundleid.html", "description": "**Bundle Id Finder** est un outil gratuit qui permet de trouver rapidement les Bundle-Ids des applications en recherchant leur nom, avec la possibilité de télécharger l'icône associée." },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "Finder de Bundle-Id", "link": "https://offcornerdev.com/bundleid.html", "description": "**Bundle Id Finder** est un outil gratuit qui permet de trouver rapidement les Bundle-Ids des applications en recherchant leur nom, avec la possibilité de télécharger l'icône associée." }
           ]
         },
         {
@@ -116,6 +153,14 @@
             { "title": "xxx", "link": "xxx", "description": "" },
             { "title": "xxx", "link": "xxx", "description": "" }
           ]
+        },
+        {
+          "title": "MacOS",
+          "links": [
+            { "title": "macosac", "link": "https://github.com/mnrkbys/macosac", "description": "Outil de collecte d'artefacts numériques pour macOS, conçu pour l'analyse forensique en environnement Apple." },
+            { "title": "Mac-Triage", "link": "https://github.com/a1l4m/Mac-Triage", "description": "Script rapide de triage pour collecter des informations essentielles sur des systèmes macOS compromis." },
+            { "title": "mac_apt", "link": "https://github.com/ydkhatri/mac_apt", "description": "Outil d'extraction et de traitement des artefacts numériques spécifiques à macOS pour l'analyse forensique." }
+          ]
         }
       ]
     },
@@ -125,13 +170,10 @@
         {
           "title": "Blogs",
           "links": [
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" },
-            { "title": "xxx", "link": "xxx", "description": "" }
+            { "title": "Live System Analysis: Discovering Encrypted Disk Volumes", "link": "https://blog.elcomsoft.com/2020/07/live-system-analysis-discovering-encrypted-disk-volumes/", "description": "Article pratique expliquant comment identifier et analyser les volumes chiffrés sur un système actif en investigation numérique." },
+            { "title": "Magnet Forensics Blog - CTF Update", "link": "https://www.magnetforensics.com/blog/update-on-magnet-summit-2022-capture-the-flag-contests/", "description": "Annonce et récapitulatif du CTF Magnet Summit 2022." },
+            { "title": "TheBinaryHick Blog", "link": "https://thebinaryhick.blog/public_images/", "description": "Articles, études de cas et ressources pour le DFIR." },
+            { "title": "Magnet Forensics Blog - Chromebook Data Locations", "link": "https://www.magnetforensics.com/blog/chromebook-data-locations/", "description": "Références pour localiser les données dans les appareils Chromebook pour les investigations forensic." }
           ]
         },
         {
@@ -175,7 +217,7 @@
     {
       "title": "Remerciements/Citations & sources",
       "links": [
-        { "title": "Stark 4N6", "link": "https://start.me/p/q6mw4Q/forensicshttps://start.me/p/q6mw4Q/forensics", "description": "" }
+        { "title": "Stark 4N6", "link": "https://start.me/p/q6mw4Q/forensics", "description": "" }
       ]
     }
   ]
