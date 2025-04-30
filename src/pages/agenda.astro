@@ -3,8 +3,7 @@ import Layout from "../layouts/ContentLayout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-// Charger tous les fichiers JSON des événements
-const allTimelines = await getCollection("agenda");
+const allEventsData = await getCollection("agenda");
 
 const today = new Date();
 today.setHours(0, 0, 0, 0);
@@ -17,7 +16,7 @@ const moisFrancais = [
 function formatDateRange(startDate: Date, endDate?: Date): string {
   const options: Intl.DateTimeFormatOptions = { weekday: 'long', day: 'numeric', month: 'long' };
   const startStr = startDate.toLocaleDateString('fr-FR', options);
-  
+
   if (endDate) {
     const endStr = endDate.toLocaleDateString('fr-FR', options);
     if (startDate.toDateString() === endDate.toDateString()) {
@@ -26,9 +25,7 @@ function formatDateRange(startDate: Date, endDate?: Date): string {
     const startMonth = moisFrancais[startDate.getMonth()];
     const endMonth = moisFrancais[endDate.getMonth()];
     if (startMonth === endMonth) {
-      const startDay = startDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric' });
-      const endDay = endDate.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric' });
-      return `du ${startDay} au ${endDay} ${startMonth}`;
+      return `du ${startStr} au ${endStr}`;
     }
     return `du ${startStr} au ${endStr}`;
   } else {
@@ -40,15 +37,15 @@ function getMonthKey(date: Date) {
   return new Date(date.getFullYear(), date.getMonth(), 1).toISOString(); 
 }
 
-const allEvents = allTimelines.map((entry) => {
+const allEvents = allEventsData.map((entry) => {
   const eventDate = new Date(entry.data.date);
   const eventEndDate = entry.data.end_date ? new Date(entry.data.end_date) : undefined;
   return {
     ...entry.data,
     date: eventDate,
     date_end: eventEndDate,
-    mois: eventDate.getMonth(),
-    annee: eventDate.getFullYear(),
+    month: eventDate.getMonth(),
+    year: eventDate.getFullYear(),
     monthKey: getMonthKey(eventDate),
   };
 });
@@ -71,80 +68,83 @@ const sortedKeys = Array.from(monthGroups.keys()).sort(
 ---
 
 <Layout title="Agenda">
-  <div class="max-w-screen-lg md:mx-auto py-12 md:py-20 px-6 space-y-24">
-    
-    <!-- PARTIE HEADER CENTRE -->
+  <div class="max-w-screen-lg md:mx-auto py-20 px-6">
+
+    <!-- HEADER SECTION -->
     <div class="w-full text-center px-6">
       <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Agenda</h2>
       <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">
-        Retrouvez les événements cybersécurité à venir !
+        Check out the upcoming events!
       </p>
     </div>
 
-    {sortedKeys.map((key) => {
-      const events = monthGroups.get(key);
-      const refDate = new Date(key);
-      const mois = moisFrancais[refDate.getMonth()]?.charAt(0).toUpperCase() + moisFrancais[refDate.getMonth()].slice(1);
-      const annee = refDate.getFullYear();
+    <!-- EVENT GROUPS BY MONTH -->
+    <div class="mt-12 space-y-24">
+      {sortedKeys.map((key) => {
+        const events = monthGroups.get(key);
+        const referenceDate = new Date(key);
+        const month = moisFrancais[referenceDate.getMonth()]?.charAt(0).toUpperCase() + moisFrancais[referenceDate.getMonth()].slice(1);
+        const year = referenceDate.getFullYear();
 
-      return (
-        <section class="flex flex-col md:flex-row items-start justify-between gap-x-4">
-          <h2 class="w-40 md:w-48 text-3xl md:text-4xl font-bold shrink-0 leading-snug tracking-tight flex flex-col">
-            <span class="text-gray-900">{mois}</span>
-            <span class="text-base md:text-lg font-medium text-gray-500">{annee}</span>
-          </h2>
+        return (
+          <section class="flex flex-col md:flex-row items-start justify-between gap-x-4">
+            <h2 class="w-40 md:w-48 text-3xl md:text-4xl font-bold shrink-0 leading-snug tracking-tight flex flex-col">
+              <span class="text-gray-900">{month}</span>
+              <span class="text-base md:text-lg font-medium text-gray-500">{year}</span>
+            </h2>
 
-          <div class="w-full md:w-26/32">
-            {events?.map((event) => {
-              const formattedDate = formatDateRange(event.date, event.date_end);
+            <div class="w-full md:w-26/32">
+              {events?.map((event) => {
+                const formattedDate = formatDateRange(event.date, event.date_end);
 
-              return (
-                <div class="group flex items-start justify-between gap-4">
-                  <div class="flex items-start">
-                    <div class="mt-3 mr-5 flex flex-col gap-2 shrink-0 w-[75px] sm:w-[160px] text-end">
-                      <h6 class="text-sm text-primary font-semibold">
-                        {event.city} - {event.country}
-                      </h6>
-                      <span class="text-xs sm:text-sm text-muted-foreground">
-                        {formattedDate}
-                      </span>
+                return (
+                  <div class="group flex items-start justify-between gap-4">
+                    <div class="flex items-start">
+                      <div class="mt-3 mr-5 flex flex-col gap-2 shrink-0 w-[75px] sm:w-[160px] text-end">
+                        <h6 class="text-sm text-primary font-semibold">
+                          {event.city} - {event.country}
+                        </h6>
+                        <span class="text-xs sm:text-sm text-muted-foreground">
+                          {formattedDate}
+                        </span>
+                      </div>
+
+                      <div class="relative pb-10 border-l-2 group-last:pb-4 pl-6 sm:pl-8">
+                        <div class="absolute h-3 w-3 -translate-x-1/2 -left-px top-4 rounded-full border-2 border-primary bg-background" />
+                        <h3 class="text-lg sm:text-xl font-semibold">{event.title}</h3>
+                        <p class="text-sm sm:text-base text-muted-foreground">
+                          {event.description}
+                        </p>
+                        {event.link && (
+                          <a
+                            href={event.link}
+                            class="text-primary underline text-sm"
+                            target="_blank"
+                          >
+                            Learn more
+                          </a>
+                        )}
+                      </div>
                     </div>
 
-                    <div class="relative pb-10 border-l-2 group-last:pb-4 pl-6 sm:pl-8">
-                      <div class="absolute h-3 w-3 -translate-x-1/2 -left-px top-4 rounded-full border-2 border-primary bg-background" />
-                      <h3 class="text-lg sm:text-xl font-semibold">{event.title}</h3>
-                      <p class="text-sm sm:text-base text-muted-foreground">
-                        {event.description}
-                      </p>
-                      {event.link && (
-                        <a
-                          href={event.link}
-                          class="text-primary underline text-sm"
-                          target="_blank"
-                        >
-                          En savoir plus
-                        </a>
-                      )}
-                    </div>
+                    {event.picture && (
+                      <div class="hidden md:block w-[96px] h-[64px] rounded-md overflow-hidden shrink-0 bg-muted">
+                        <Image
+                          src={event.picture}
+                          alt={event.title}
+                          class="object-cover w-full h-full"
+                          width={96}
+                          height={64}
+                        />
+                      </div>
+                    )}
                   </div>
-
-                  {event.picture && (
-                    <div class="hidden md:block w-[96px] h-[64px] rounded-md overflow-hidden shrink-0 bg-muted">
-                      <Image
-                        src={event.picture}
-                        alt={event.title}
-                        class="object-cover w-full h-full"
-                        width={96}
-                        height={64}
-                      />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      );
-    })}
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
+    </div>
   </div>
 </Layout>

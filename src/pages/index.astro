@@ -1,108 +1,107 @@
 ---
 import Layout from '@/layouts/ContentLayout.astro';
 import Logo from "@/assets/logo.svg";
-
 import BrandDiscord from '@tabler/icons/filled/brand-discord.svg';
 import BrandLinkedIn from '@tabler/icons/filled/brand-linkedin.svg';
 import BrandX from '@tabler/icons/filled/brand-x.svg';
 import HelloAsso from '@/assets/images/helloasso.svg';
-// import HelloAsso from '@/assets/hello-asso.svg';
 ---
 
-<Layout title="Index">
-	<div class="pt-16 h-screen flex flex-col items-center justify-center bg-black space-y-4">
-		<h1 class="text-white text-3xl md:text-5xl font-bold">Hack<span class="text-[#8f8f8f8f]">In</span>Provence</h1>
-		<Logo class="!h-44 !w-88 md:!h-82 md:!w-128" />
-		<p class="text-white text-lg md:text-2xl text-center">Degun soulet es mai fort<br />que tòutis ensèn</p>
-	</div>
+<Layout title="Home">
+  <div class="pt-16 h-screen flex flex-col items-center justify-center bg-black space-y-4">
+    <h1 class="text-white text-3xl md:text-5xl font-bold">Hack<span class="text-[#8f8f8f8f]">In</span>Provence</h1>
+    <Logo class="!h-44 !w-88 md:!h-82 md:!w-128" />
+    <p class="text-white text-lg md:text-2xl text-center">
+      Degun soulet es mai fort<br />que tòutis ensèn
+    </p>
+  </div>
 
-	<div class="min-h-screen flex items-center justify-center px-6" style="color: var(--color-foreground)">
-		<div class="relative text-center max-w-2xl">
-			<h1 class="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
-			L'association
-			</h1>
-			<p class="mt-2 text-[17px] md:text-lg">
-			Hack In Provence #HIP est une association loi 1901 dont le but est l’animation, l’accompagnement et la promotion des initiatives de hacking éthique en Provence. Pour cela nous organisons différents événements, conférences, actions de démystification, sensibilisations, compétitions, etc. dans le domaine de la sécurité, des réseaux informatiques et des logiciels Open Source. Nous ne soutenons que des initiatives s’inscrivant dans une démarche éthique, qui induit le strict respect des lois et de la réglementation en vigueur.
-			</p>
+  <div class="min-h-screen flex items-center justify-center px-6 text-gray-900 dark:text-white">
+    <div class="relative text-center max-w-2xl">
+      <h1 class="mt-2 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+        The Association
+      </h1>
+      <p class="mt-2 text-[17px] md:text-lg">
+        Hack In Provence (#HIP) is a non-profit association (law 1901) aimed at promoting and supporting ethical hacking initiatives in Provence. We organize various events such as conferences, awareness campaigns, competitions, and more, focused on security, networks, and open-source software. We only support ethical initiatives, which strictly comply with laws and regulations.
+      </p>
 
-			<h2 class="mt-12 text-3xl font-bold">Nos actions ont pour vocation à :</h2>
-			<dl class="mt-6 max-w-2xl text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
-			<div class="flex flex-col pb-3">
-				<dt class="text-lg font-semibold">Découvrir le hacking et ses domaines</dt>
-				<dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
-				Informatique, biologie (bio-hacking), électronique, entrepreneuriat (growth-hacking), etc…
-				</dd>
-			</div>
-			<div class="flex flex-col py-3">
-				<dt class="text-lg font-semibold">Valoriser les activités hacking locales</dt>
-				<dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
-				Fablabs, hacker-spaces, enseignement universitaire du hacking, etc…
-				</dd>
-			</div>
-			<div class="flex flex-col py-3">
-				<dt class="text-lg font-semibold">Réfléchir aux enjeux actuels et futurs</dt>
-				<dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
-				Évolution des technologies, société, impacts économiques, écologiques, vie privée, etc…
-				</dd>
-			</div>
-			<div class="flex flex-col pt-3">
-				<dt class="text-lg font-semibold">Participer à des événements</dt>
-				<dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
-				Compétitions, salons, manifestations nationales et internationales.
-				</dd>
-			</div>
-			</dl>
+      <h2 class="mt-12 text-3xl font-bold">Our actions aim to:</h2>
+      <dl class="mt-6 max-w-2xl divide-y divide-gray-200 dark:divide-gray-700">
+        <div class="flex flex-col pb-3">
+          <dt class="text-lg font-semibold">Discover hacking and its fields</dt>
+          <dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
+            Computing, biology (bio-hacking), electronics, entrepreneurship (growth-hacking), etc...
+          </dd>
+        </div>
+        <div class="flex flex-col py-3">
+          <dt class="text-lg font-semibold">Promote local hacking activities</dt>
+          <dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
+            Fablabs, hacker-spaces, university hacking education, etc...
+          </dd>
+        </div>
+        <div class="flex flex-col py-3">
+          <dt class="text-lg font-semibold">Reflect on current and future challenges</dt>
+          <dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
+            Technology evolution, society, economic, ecological impacts, privacy, etc...
+          </dd>
+        </div>
+        <div class="flex flex-col pt-3">
+          <dt class="text-lg font-semibold">Participate in events</dt>
+          <dd class="mt-1 text-gray-500 md:text-lg dark:text-gray-400">
+            Competitions, fairs, national and international events.
+          </dd>
+        </div>
+      </dl>
 
-			<section class="max-w-screen-xl mx-auto px-6 py-24 space-y-24">
-			<!-- Bloc 1 : Texte à gauche, image à droite -->
-			<div class="grid lg:grid-cols-2 items-center gap-12">
-				<div>
-				<h3 class="text-3xl font-bold mb-4">Discuter avec nous</h3>
-				<p class="text-lg text-gray-600 dark:text-gray-300">
-					Nous utilisons en plateforme grand public le réseau Discord. Venez poser vos questions, échanger et suivre nos actualités !
-				</p>
-				</div>
-				<div class="flex justify-center">
-				<a href="https://discord.gg/tonlien" target="_blank" rel="noopener noreferrer">
-					<BrandDiscord class="h-34 w-34 hover:scale-110 transition-transform fill-[#7289da]" />
-				</a>
-				</div>
-			</div>
+      <section class="max-w-screen-xl mx-auto px-6 py-24 space-y-24">
+        <!-- Block 1: Text left, image right -->
+        <div class="grid lg:grid-cols-2 items-center gap-12">
+          <div>
+            <h3 class="text-3xl font-bold mb-4">Talk to us</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              We use the public platform Discord. Come ask your questions, exchange ideas, and follow our news!
+            </p>
+          </div>
+          <div class="flex justify-center">
+            <a href="https://discord.gg/tonlien" target="_blank" rel="noopener noreferrer">
+              <BrandDiscord class="h-34 w-34 hover:scale-110 transition-transform fill-[#7289da]" />
+            </a>
+          </div>
+        </div>
 
-			<!-- Bloc 2 : Image à gauche, texte à droite -->
-			<div class="grid lg:grid-cols-2 items-center gap-12">
-				<div class="flex justify-center order-last lg:order-first">
-				<a href="https://www.helloasso.com/associations/hack-in-provence" target="_blank" rel="noopener noreferrer">
-					<HelloAsso class="h-15 hover:scale-110 transition-transform" />
-				</a>
-				</div>
-				<div>
-				<h3 class="text-3xl font-bold mb-4">Devenir adhérent HIP</h3>
-				<p class="text-lg text-gray-600 dark:text-gray-300">
-					Pour être membre de l'association, cette année encore la cotisation est de <strong>15€</strong> en nom propre et <strong>2€</strong> pour les étudiants et demandeurs d'emploi.
-				</p>
-				</div>
-			</div>
+        <!-- Block 2: Image left, text right -->
+        <div class="grid lg:grid-cols-2 items-center gap-12">
+          <div class="flex justify-center order-last lg:order-first">
+            <a href="https://www.helloasso.com/associations/hack-in-provence" target="_blank" rel="noopener noreferrer">
+              <HelloAsso class="h-15 hover:scale-110 transition-transform" />
+            </a>
+          </div>
+          <div>
+            <h3 class="text-3xl font-bold mb-4">Become a HIP member</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              To be a member of the association, the subscription fee is <strong>€15</strong> for individuals and <strong>€2</strong> for students and job seekers this year.
+            </p>
+          </div>
+        </div>
 
-			<!-- Bloc 3 : Texte à gauche, image à droite -->
-			<div class="grid lg:grid-cols-2 items-center gap-12">
-				<div>
-				<h3 class="text-3xl font-bold mb-4">Nous suivre</h3>
-				<p class="text-lg text-gray-600 dark:text-gray-300">
-					Retrouvez nos publications, événements et annonces sur nos réseaux sociaux.
-				</p>
-				</div>
-				<div class="flex gap-6 justify-center">
-				<a href="https://www.linkedin.com/company/34674666/" target="_blank" rel="noopener noreferrer">
-					<BrandLinkedIn class="h-16 w-16 hover:scale-110 transition-transform" />
-				</a>
-				<a href="https://x.com/hackinprovence?lang=fr" target="_blank" rel="noopener noreferrer">
-					<BrandX class="h-16 w-16 hover:scale-110 transition-transform" />
-				</a>
-				</div>
-			</div>
-			</section>
-		</div>
-	</div>
+        <!-- Block 3: Text left, image right -->
+        <div class="grid lg:grid-cols-2 items-center gap-12">
+          <div>
+            <h3 class="text-3xl font-bold mb-4">Follow us</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+              Find our posts, events, and announcements on our social media.
+            </p>
+          </div>
+          <div class="flex gap-6 justify-center">
+            <a href="https://www.linkedin.com/company/34674666/" target="_blank" rel="noopener noreferrer">
+              <BrandLinkedIn class="h-16 w-16 hover:scale-110 transition-transform" />
+            </a>
+            <a href="https://x.com/hackinprovence?lang=fr" target="_blank" rel="noopener noreferrer">
+              <BrandX class="h-16 w-16 hover:scale-110 transition-transform" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </Layout>
-	

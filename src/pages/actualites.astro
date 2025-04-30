@@ -5,11 +5,40 @@ import { Badge } from '@/components/starwind/badge';
 import { Card, CardContent, CardHeader } from '@/components/starwind/card';
 import { Image } from 'astro:assets';
 
-// Récupération des posts
+// Get all posts and sort them by date descending
 const posts: CollectionEntry<'actualites'>[] = (await getCollection('actualites'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-// Fonction pour extraire les catégories avec leur nombre d'occurrences
+// Available background colors
+const bgColors = [
+  'bg-rose-500', 'bg-orange-500', 'bg-amber-500',
+  'bg-lime-500', 'bg-emerald-500', 'bg-cyan-500',
+  'bg-sky-500', 'bg-violet-500', 'bg-fuchsia-500',
+];
+
+// Ensure unique color per category
+const colorMap = new Map<string, string>();
+const usedColors = new Set<string>();
+
+function getUniqueBackgroundColor(name: string): string {
+  if (colorMap.has(name)) {
+    return colorMap.get(name)!;
+  }
+
+  const availableColor = bgColors.find((color) => !usedColors.has(color));
+  const color = availableColor ?? 'bg-gray-400';
+
+  colorMap.set(name, color);
+  usedColors.add(color);
+
+  return color;
+}
+
+function getTextColor(_key: string) {
+  return 'text-white';
+}
+
+// Extract categories from posts
 function extractCategories(posts: CollectionEntry<'actualites'>[]) {
   const map = new Map<string, number>();
 
@@ -23,30 +52,14 @@ function extractCategories(posts: CollectionEntry<'actualites'>[]) {
   return Array.from(map.entries()).map(([name, totalPosts]) => ({
     name,
     totalPosts,
-    background: getBackgroundColor(name),
+    background: getUniqueBackgroundColor(name),
     color: getTextColor(name),
   }));
 }
 
-// Couleurs aléatoires basées sur le nom de la catégorie
-const bgColors = [
-  'bg-red-500', 'bg-yellow-500', 'bg-green-500', 'bg-blue-500',
-  'bg-indigo-500', 'bg-pink-500', 'bg-purple-500', 'bg-rose-500',
-];
-
-function getBackgroundColor(key: string) {
-  const index = [...key].reduce((acc, char) => acc + char.charCodeAt(0), 0) % bgColors.length;
-  return bgColors[index];
-}
-
-function getTextColor(_key: string) {
-  return 'text-white';
-}
-
-// Liste des catégories générées dynamiquement
 const categories = extractCategories(posts);
 
-// Pour les badges de catégorie dans les cartes
+// Category badge style
 function getCategoryStyle(name: string) {
   const category = categories.find((c) => c.name === name);
   return category
@@ -56,9 +69,8 @@ function getCategoryStyle(name: string) {
 ---
 
 <Layout title="Actualités">
-  <div class="pt-16 max-w-screen-md mx-auto py-10 lg:py-20 px-6 xl:px-0">
-    
-    <!-- Partie titre + sous-titre centrée -->
+  <div class="max-w-screen-lg md:mx-auto py-20 px-6">
+
     <div class="w-full text-center px-6">
       <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Actualités</h2>
       <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">
@@ -66,59 +78,59 @@ function getCategoryStyle(name: string) {
       </p>
     </div>
 
-    <!-- Partie flex : posts + aside -->
+    <!-- Main layout: posts and sidebar -->
     <div class="mt-12 flex lg:flex-row lg:gap-12">
       
-      <!-- SECTION PRINCIPALE : les posts -->
-      <div class="flex-1">
-        <div class="mt-4 space-y-12" id="posts-container">
-          {posts.map((post) => (
-            <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
-              <CardHeader>
-                <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
-                  {post.data.image && (
-                    <Image
-                      src={post.data.image}
-                      alt={post.data.title}
-                      class="rounded-lg object-fill"
-                    />
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent class="flex flex-col">
-                <div class="flex gap-2 flex-wrap">
-                  {post.data.categories.map((cat) => (
-                    <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
-                      {cat}
-                    </Badge>
-                  ))}
-                </div>
-                <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
-                <p class="text-muted-foreground">{post.data.summary}</p>
-                <div class="mt-2 text-sm text-muted-foreground">
-                  Par {post.data.author} – {post.data.date.toLocaleDateString()}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <!-- Posts section -->
+      <div class="flex-1 mt-4 space-y-12" id="posts-container">
+        {posts.map((post) => (
+          <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
+            <CardHeader>
+              <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
+                {post.data.image && (
+                  <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="rounded-lg object-fill"
+                  />
+                )}
+              </div>
+            </CardHeader>
+            <CardContent class="flex flex-col">
+              <div class="flex gap-2 flex-wrap">
+                {post.data.categories.map((cat) => (
+                  <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
+                    {cat}
+                  </Badge>
+                ))}
+              </div>
+              <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
+              <p class="text-muted-foreground">{post.data.summary}</p>
+              <div class="mt-2 text-sm text-muted-foreground">
+                Par {post.data.author} – {post.data.date.toLocaleDateString()}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
-      <!-- ASIDE : Catégories dynamiques -->
+      <!-- Category filters sidebar -->
       <div class="hidden lg:block lg:fixed top-20 right-16 shrink-0 w-[180px]">
         <h3 class="text-3xl font-bold tracking-tight mb-4">Catégories</h3>
-        <div class="flex flex-wrap gap-3 sm:flex-row md:grid-cols-3 lg:flex-col">
+        <div class="flex flex-col sm:flex-row sm:flex-wrap sm:gap-3 lg:flex-col">
           {categories.map((category) => (
             <label class="flex items-center gap-3 p-3 rounded-md cursor-pointer transition hover:bg-opacity-80 w-auto">
-              <div>
-                <input
-                  type="checkbox"
-                  class="peer h-6 w-6 cursor-pointer appearance-none rounded-full bg-slate-100 shadow border border-slate-300 checked:bg-slate-800 checked:border-slate-800 transition"
-                  data-category={category.name}
-                  checked
-                />
-              </div>
-              <Badge class={`flex justify-between items-center text-sm ${getCategoryStyle(category.name)} px-3 py-1 rounded-full font-medium w-[100px]`}>
+              <input
+                type="checkbox"
+                class="peer h-6 w-6 cursor-pointer appearance-none rounded-full bg-slate-100 shadow border border-slate-300 checked:bg-slate-800 checked:border-slate-800 transition"
+                data-category={category.name}
+                checked
+              />
+              <Badge
+                class={`w-[100px] px-3 py-1 rounded-full font-medium text-sm flex justify-between items-center truncate
+                  ${getCategoryStyle(category.name)}
+                  transition-transform duration-150 ease-in-out motion-safe:hover:scale-[1.03] motion-safe:hover:shadow-md`}
+              >
                 <span class="truncate">{category.name}</span>
                 <span class="text-xs ml-2">{category.totalPosts}</span>
               </Badge>
@@ -132,38 +144,26 @@ function getCategoryStyle(name: string) {
 </Layout>
 
 <script>
-    function filterPosts() {
-      // Récupérer les checkboxes cochées
-      const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-        .map(input => input.getAttribute('data-category') ?? '');
-  
-      // Récupérer les articles
-      const posts = document.querySelectorAll('.post-item');
-  
-      posts.forEach(post => {
-        // Récupérer les catégories de chaque article et gérer les valeurs nulles
-        const postCategories = post.getAttribute('data-categories')?.split(', ') ?? [];
-  
-        // Vérifier si au moins une catégorie est cochée et si elle est dans les catégories de l'article
-        const isVisible = checkedCategories.some(category => postCategories.includes(category));
-  
-        // Manipuler les styles en toute sécurité
-        if (post instanceof HTMLElement && post.style) {
-          if (isVisible) {
-            post.style.display = "";
-            return;
-          }
-          post.style.display = 'none';
-        }
-      });
-    }
-  
-    // Ajouter l'événement aux checkboxes pour filtrer les articles lors du changement d'état
-    window.onload = () => {
-      filterPosts();
-  
-      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', filterPosts);
-      });
-    };
+  // Filters posts based on selected categories
+  function filterPosts() {
+    const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(input => input.getAttribute('data-category') ?? '');
+
+    const posts = document.querySelectorAll('.post-item');
+
+    posts.forEach(post => {
+      const postCategories = post.getAttribute('data-categories')?.split(', ') ?? [];
+      const isVisible = checkedCategories.some(category => postCategories.includes(category));
+      if (post instanceof HTMLElement && post.style) {
+        post.style.display = isVisible ? '' : 'none';
+      }
+    });
+  }
+
+  window.onload = () => {
+    filterPosts();
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', filterPosts);
+    });
+  };
 </script>
