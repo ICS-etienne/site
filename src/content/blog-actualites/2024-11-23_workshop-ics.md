@@ -1,5 +1,6 @@
 ---
 title: "Workshop Ics"
+slug: "2024-11-23-workshop-ics"
 date: 2024-11-23
 categories: ["workshop", "84", "ICS"]
 author: "biero"

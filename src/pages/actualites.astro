@@ -5,32 +5,26 @@ import { Badge } from '@/components/starwind/badge';
 import { Card, CardContent, CardHeader } from '@/components/starwind/card';
 import { Image } from 'astro:assets';
 
-// Get all posts and sort them by date descending
+const BASE = import.meta.env.BASE_URL;
+
 const posts: CollectionEntry<'actualites'>[] = (await getCollection('actualites'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-// Available background colors
 const bgColors = [
   'bg-rose-500', 'bg-orange-500', 'bg-amber-500',
   'bg-lime-500', 'bg-emerald-500', 'bg-cyan-500',
   'bg-sky-500', 'bg-violet-500', 'bg-fuchsia-500',
 ];
 
-// Ensure unique color per category
 const colorMap = new Map<string, string>();
 const usedColors = new Set<string>();
 
 function getUniqueBackgroundColor(name: string): string {
-  if (colorMap.has(name)) {
-    return colorMap.get(name)!;
-  }
-
+  if (colorMap.has(name)) return colorMap.get(name)!;
   const availableColor = bgColors.find((color) => !usedColors.has(color));
   const color = availableColor ?? 'bg-gray-400';
-
   colorMap.set(name, color);
   usedColors.add(color);
-
   return color;
 }
 
@@ -38,17 +32,14 @@ function getTextColor(_key: string) {
   return 'text-white';
 }
 
-// Extract categories from posts
 function extractCategories(posts: CollectionEntry<'actualites'>[]) {
   const map = new Map<string, number>();
-
   for (const post of posts) {
     const postCategories = post.data.categories || [];
     for (const cat of postCategories) {
       map.set(cat, (map.get(cat) || 0) + 1);
     }
   }
-
   return Array.from(map.entries()).map(([name, totalPosts]) => ({
     name,
     totalPosts,
@@ -59,7 +50,6 @@ function extractCategories(posts: CollectionEntry<'actualites'>[]) {
 
 const categories = extractCategories(posts);
 
-// Category badge style
 function getCategoryStyle(name: string) {
   const category = categories.find((c) => c.name === name);
   return category
@@ -70,7 +60,6 @@ function getCategoryStyle(name: string) {
 
 <Layout title="Actualités">
   <div class="max-w-screen-lg md:mx-auto py-20 px-6">
-
     <div class="w-full text-center px-6">
       <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Actualités</h2>
       <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">
@@ -78,43 +67,41 @@ function getCategoryStyle(name: string) {
       </p>
     </div>
 
-    <!-- Main layout: posts and sidebar -->
     <div class="mt-12 flex lg:flex-row lg:gap-12">
-      
-      <!-- Posts section -->
       <div class="flex-1 mt-4 space-y-12" id="posts-container">
         {posts.map((post) => (
-          <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
-            <CardHeader>
-              <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
-                {post.data.image && (
-                  <Image
-                    src={post.data.image}
-                    alt={post.data.title}
-                    class="rounded-lg object-fill"
-                  />
-                )}
-              </div>
-            </CardHeader>
-            <CardContent class="flex flex-col">
-              <div class="flex gap-2 flex-wrap">
-                {post.data.categories.map((cat) => (
-                  <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
-                    {cat}
-                  </Badge>
-                ))}
-              </div>
-              <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
-              <p class="text-muted-foreground">{post.data.summary}</p>
-              <div class="mt-2 text-sm text-muted-foreground">
-                Par {post.data.author} – {post.data.date.toLocaleDateString()}
-              </div>
-            </CardContent>
-          </Card>
+          <a href={`${BASE}/actualites/${post.data.slug}`} class="block hover:opacity-90 transition">
+            <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
+              <CardHeader>
+                <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
+                  {post.data.image && (
+                    <Image
+                      src={post.data.image}
+                      alt={post.data.title}
+                      class="rounded-lg object-fill"
+                    />
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent class="flex flex-col">
+                <div class="flex gap-2 flex-wrap">
+                  {post.data.categories.map((cat) => (
+                    <Badge class={`hover:bg-opacity-80 ${getCategoryStyle(cat)}`}>
+                      {cat}
+                    </Badge>
+                  ))}
+                </div>
+                <h3 class="mt-2 text-xl font-semibold">{post.data.title}</h3>
+                <p class="text-muted-foreground">{post.data.summary}</p>
+                <div class="mt-2 text-sm text-muted-foreground">
+                  Par {post.data.author} – {post.data.date.toLocaleDateString()}
+                </div>
+              </CardContent>
+            </Card>
+          </a>
         ))}
       </div>
 
-      <!-- Category filters sidebar -->
       <div class="hidden lg:block lg:fixed top-20 right-16 shrink-0 w-[180px]">
         <h3 class="text-3xl font-bold tracking-tight mb-4">Catégories</h3>
         <div class="flex flex-col sm:flex-row sm:flex-wrap sm:gap-3 lg:flex-col">
@@ -138,13 +125,11 @@ function getCategoryStyle(name: string) {
           ))}
         </div>
       </div>
-
     </div> 
   </div>
 </Layout>
 
 <script>
-  // Filters posts based on selected categories
   function filterPosts() {
     const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
       .map(input => input.getAttribute('data-category') ?? '');

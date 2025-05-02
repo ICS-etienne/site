@@ -1,5 +1,6 @@
 ---
 title: "Workshop Wikiwar"
+slug: "2024-11-29-workshop-wikiwar"
 date: 2024-11-29
 categories: ["workshop", "hackpéro", "83", "wikiwar"]
 author: "CharlaineP"

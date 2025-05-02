@@ -6,11 +6,12 @@ const actualites = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      slug: z.string(),
       date: z.date(),
       categories: z.array(z.string()),
       author: z.string(),
       summary: z.string(),
-      image: image().optional(), // ✅ ici c'est bon maintenant
+      image: image().optional(),
     }),
 });
 
