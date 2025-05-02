@@ -1,16 +1,37 @@
 ---
-import Layout from '../layouts/ContentLayout.astro';
+import Layout from '../../../layouts/ContentLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { Badge } from '@/components/starwind/badge';
 import { Card, CardContent, CardHeader } from '@/components/starwind/card';
 import { Image } from 'astro:assets';
 
-const BASE = import.meta.env.BASE_URL;
+const POSTS_PER_PAGE = 6;
 
-const posts: CollectionEntry<'actualites'>[] = (await getCollection('actualites'))
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 6; 
+  const allPosts: CollectionEntry<'actualites'>[] = (await getCollection('actualites'))
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+  return Array.from({ length: totalPages }).map((_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+}
+
+// Récupération de la page depuis l'URL
+const { page } = Astro.params;
+const currentPage = parseInt(page);
+
+const allPosts: CollectionEntry<'actualites'>[] = (await getCollection('actualites'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-const bgColors = [
+const start = (currentPage - 1) * POSTS_PER_PAGE;
+const end = start + POSTS_PER_PAGE;
+const paginatedPosts = allPosts.slice(start, end);
+
+// Gestion des catégories
+const bgColors: string[] = [
   'bg-rose-500', 'bg-orange-500', 'bg-amber-500',
   'bg-lime-500', 'bg-emerald-500', 'bg-cyan-500',
   'bg-sky-500', 'bg-violet-500', 'bg-fuchsia-500',
@@ -28,11 +49,18 @@ function getUniqueBackgroundColor(name: string): string {
   return color;
 }
 
-function getTextColor(_key: string) {
+function getTextColor(_key: string): string {
   return 'text-white';
 }
 
-function extractCategories(posts: CollectionEntry<'actualites'>[]) {
+interface Category {
+  name: string;
+  totalPosts: number;
+  background: string;
+  color: string;
+}
+
+function extractCategories(posts: CollectionEntry<'actualites'>[]): Category[] {
   const map = new Map<string, number>();
   for (const post of posts) {
     const postCategories = post.data.categories || [];
@@ -48,29 +76,25 @@ function extractCategories(posts: CollectionEntry<'actualites'>[]) {
   }));
 }
 
-const categories = extractCategories(posts);
-
-function getCategoryStyle(name: string) {
+function getCategoryStyle(name: string): string {
   const category = categories.find((c) => c.name === name);
   return category
     ? `${category.background} ${category.color}`
     : 'bg-gray-200 text-gray-800';
 }
+
+const categories: Category[] = extractCategories(allPosts);
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
 ---
 
-<Layout title="Actualités">
+<Layout title="Actualités – Page {page}">
   <div class="max-w-screen-lg md:mx-auto py-20 px-6">
-    <div class="w-full text-center px-6">
-      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Actualités</h2>
-      <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">
-        Les dernières nouvelles et activités organisées ou suivies par l'association.
-      </p>
-    </div>
+    <h2 class="text-2xl md:text-3xl font-bold text-center">Actualités</h2>
 
     <div class="mt-12 flex lg:flex-row lg:gap-12">
-      <div class="flex-1 mt-4 space-y-12" id="posts-container">
-        {posts.map((post) => (
-          <a href={`${BASE}/actualites/${post.data.slug}`} class="block hover:opacity-90 transition">
+      <div class="flex-1 space-y-12">
+        {paginatedPosts.map((post) => (
+          <a href={`/site/actualites/${post.data.slug}`} class="block hover:opacity-90 transition">
             <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
               <CardHeader>
                 <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
@@ -102,53 +126,29 @@ function getCategoryStyle(name: string) {
         ))}
       </div>
 
+      <!-- Catégories -->
       <div class="hidden lg:block lg:fixed top-20 right-16 shrink-0 w-[180px]">
         <h3 class="text-3xl font-bold tracking-tight mb-4">Catégories</h3>
-        <div class="flex flex-col sm:flex-row sm:flex-wrap sm:gap-3 lg:flex-col">
+        <div class="flex flex-col gap-2">
           {categories.map((category) => (
-            <label class="flex items-center gap-3 p-3 rounded-md cursor-pointer transition hover:bg-opacity-80 w-auto">
-              <input
-                type="checkbox"
-                class="peer h-6 w-6 cursor-pointer appearance-none rounded-full bg-slate-100 shadow border border-slate-300 checked:bg-slate-800 checked:border-slate-800 transition"
-                data-category={category.name}
-                checked
-              />
-              <Badge
-                class={`w-[100px] px-3 py-1 rounded-full font-medium text-sm flex justify-between items-center truncate
-                  ${getCategoryStyle(category.name)}
-                  transition-transform duration-150 ease-in-out motion-safe:hover:scale-[1.03] motion-safe:hover:shadow-md`}
-              >
-                <span class="truncate">{category.name}</span>
-                <span class="text-xs ml-2">{category.totalPosts}</span>
-              </Badge>
-            </label>
+            <Badge class={`block text-center ${getCategoryStyle(category.name)}`}>
+              {category.name} ({category.totalPosts})
+            </Badge>
           ))}
         </div>
       </div>
-    </div> 
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-16 flex justify-center gap-4 text-sm font-medium">
+      {Array.from({ length: totalPages }).map((_, i) => (
+        <a
+          href={`/site/actualites/page/${i + 1}`}
+          class={`px-3 py-2 rounded-md ${currentPage === i + 1 ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-700'}`}
+        >
+          {i + 1}
+        </a>
+      ))}
+    </div>
   </div>
 </Layout>
-
-<script>
-  function filterPosts() {
-    const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-      .map(input => input.getAttribute('data-category') ?? '');
-
-    const posts = document.querySelectorAll('.post-item');
-
-    posts.forEach(post => {
-      const postCategories = post.getAttribute('data-categories')?.split(', ') ?? [];
-      const isVisible = checkedCategories.some(category => postCategories.includes(category));
-      if (post instanceof HTMLElement && post.style) {
-        post.style.display = isVisible ? '' : 'none';
-      }
-    });
-  }
-
-  window.onload = () => {
-    filterPosts();
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-      checkbox.addEventListener('change', filterPosts);
-    });
-  };
-</script>
