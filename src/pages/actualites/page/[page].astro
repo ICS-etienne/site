@@ -98,10 +98,16 @@ const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
             <Card class="p-4 flex post-item" data-categories={post.data.categories.join(', ')}>
               <CardHeader>
                 <div class="hidden sm:block aspect-video w-56 bg-muted rounded-lg">
-                  {post.data.image && (
+                  {post.data.image ? (
                     <Image
                       src={post.data.image}
                       alt={post.data.title}
+                      class="rounded-lg object-fill"
+                    />
+                  ) : (
+                    <img
+                      src="/logo.svg"
+                      alt="Default logo"
                       class="rounded-lg object-fill"
                     />
                   )}
@@ -129,11 +135,24 @@ const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
       <!-- Catégories -->
       <div class="hidden lg:block lg:fixed top-20 right-16 shrink-0 w-[180px]">
         <h3 class="text-3xl font-bold tracking-tight mb-4">Catégories</h3>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col sm:flex-row sm:flex-wrap sm:gap-3 lg:flex-col">
           {categories.map((category) => (
-            <Badge class={`block text-center ${getCategoryStyle(category.name)}`}>
-              {category.name} ({category.totalPosts})
-            </Badge>
+            <label class="flex items-center gap-3 p-3 rounded-md cursor-pointer transition hover:bg-opacity-80 w-auto">
+              <input
+                type="checkbox"
+                class="peer h-6 w-6 cursor-pointer appearance-none rounded-full bg-slate-100 shadow border border-slate-300 checked:bg-slate-800 checked:border-slate-800 transition"
+                data-category={category.name}
+                checked
+              />
+              <Badge
+                class={`w-[120px] px-3 py-1 rounded-full font-medium text-sm flex justify-between items-center truncate
+                  ${getCategoryStyle(category.name)}
+                  transition-transform duration-150 ease-in-out motion-safe:hover:scale-[1.03] motion-safe:hover:shadow-md`}
+              >
+                <span class="truncate">{category.name}</span>
+                <span class="text-xs ml-2">{category.totalPosts}</span>
+              </Badge>
+            </label>
           ))}
         </div>
       </div>
@@ -151,4 +170,54 @@ const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
       ))}
     </div>
   </div>
+
+  <script>
+    // Filter posts based on selected categories
+    function filterPosts() {
+      const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+        .map(input => input.getAttribute('data-category') ?? '');
+
+      const posts = document.querySelectorAll('.post-item');
+
+      posts.forEach(post => {
+        const postCategories = post.getAttribute('data-categories')?.split(', ') ?? [];
+        const isVisible = checkedCategories.some(category => postCategories.includes(category));
+        if (post instanceof HTMLElement && post.style) {
+          post.style.display = isVisible ? '' : 'none';
+        }
+      });
+    }
+
+    window.onload = () => {
+      filterPosts();
+      document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', filterPosts);
+      });
+    };
+  </script>
 </Layout>
+
+
+<script>
+  function filterPosts() {
+    const checkedCategories = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(input => input.getAttribute('data-category') ?? '');
+
+    const posts = document.querySelectorAll('.post-item');
+
+    posts.forEach(post => {
+      const postCategories = post.getAttribute('data-categories')?.split(', ') ?? [];
+      const isVisible = checkedCategories.some(category => postCategories.includes(category));
+      if (post instanceof HTMLElement && post.style) {
+        post.style.display = isVisible ? '' : 'none';
+      }
+    });
+  }
+
+  window.onload = () => {
+    filterPosts();
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', filterPosts);
+    });
+  };
+</script>
